@@ -35,48 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        let urlString = "https://api.flickr.com/services/feeds/photos_public.gne?tags=ufc&format=json&nojsoncallback=1" //NSUserDefaults.standardUserDefaults().stringForKey("PhotoFeedURLString")
-        print(urlString)
-        
-        
-//        guard let foundURLString = urlString else {
-//            return
-//        }
-        
-        if let url = NSURL(string: urlString) {
-            self.updateFeed(url, completion: { (feed) -> Void in
-                let navController = application.windows[0].rootViewController as? UINavigationController
-                let viewController = navController?.viewControllers[0] as? ImageFeedTableViewController
-                viewController?.feed = feed
-            })
-        }
-
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface. 
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
-    //MARK: Update Feed Request
-    func updateFeed(url: NSURL, completion: (feed: Feed?) -> Void) {
-        let request = NSURLRequest(URL: url)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if error == nil && data != nil {
-                let feed = Feed(data: data!, sourceURL: url)
-                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                    completion(feed: feed)
-                })
-            }
-            
-        }
-        
-        task.resume()
-    }
-
     
     
     // MARK: - Core Data stack

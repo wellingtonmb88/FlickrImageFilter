@@ -1,6 +1,6 @@
 //
 //  Feed.swift
-//  PhotoFeed
+//  FlickrImageFilter
 //
 //  Created by WELLINGTON BARBOSA on 2/26/16.
 //  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.
@@ -8,15 +8,12 @@
 
 import Foundation
 
-
-
 func fixJsonData (data: NSData) -> NSData {
     var dataString = String(data: data, encoding: NSUTF8StringEncoding)!
     dataString = dataString.stringByReplacingOccurrencesOfString("\\'", withString: "'")
     return dataString.dataUsingEncoding(NSUTF8StringEncoding)!
     
 }
-
 
 class Feed {
     

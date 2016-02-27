@@ -1,6 +1,6 @@
 //
 //  FeedItem.swift
-//  PhotoFeed
+//  FlickrImageFilter
 //
 //  Created by WELLINGTON BARBOSA on 2/26/16.
 //  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.

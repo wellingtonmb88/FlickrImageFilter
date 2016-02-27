@@ -10,50 +10,19 @@ import UIKit
 
 class FeedDatailsViewController: UIViewController {
     
-    @IBOutlet weak var feedImage: UIImageView!
+    @IBOutlet weak var detailImage: DownloadImageView!
     
-    @IBOutlet weak var feedName: UILabel!
+    @IBOutlet weak var detailName: UILabel!
     
     var feedItem: FeedItem!
-    
-    var urlSession: NSURLSession!
-    var dataTask: NSURLSessionDataTask! 
-    
-
-    override func viewWillAppear(animated: Bool) {
-        
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        self.urlSession = NSURLSession(configuration: configuration)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.urlSession.invalidateAndCancel()
-        self.urlSession = nil
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        self.urlSession = NSURLSession(configuration: configuration)
+        self.detailName.text = self.feedItem.title
         
-        feedName.text = self.feedItem.title
-        
-        let request = NSURLRequest(URL: self.feedItem.imageURL)
-        
-        dataTask = self.urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                if error == nil && data != nil {
-                    let image = UIImage(data: data!)
-                    self.feedImage.image = image
-                }
-            })
-            
-        }
-        
-        dataTask.resume()
+        self.detailImage.setUrl(self.feedItem.imageURL.absoluteString)
     }
     
     
@@ -61,7 +30,7 @@ class FeedDatailsViewController: UIViewController {
         let storyboard = UIStoryboard(name: "FilterMain", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("FilterMainViewController") as! FilterMainViewController
         
-        vc.imageOriginal = self.feedImage.image
+        vc.imageOriginal = self.detailImage.image
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

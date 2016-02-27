@@ -24,7 +24,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FU0-Av-uLS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QmG-Gr-B7l">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QmG-Gr-B7l" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="140"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGP-eX-qxL">
@@ -88,7 +88,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="78" width="560" height="225"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
@@ -113,8 +113,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="feedImage" destination="ZOk-rR-W44" id="Zp1-f6-n6S"/>
-                        <outlet property="feedName" destination="ZJd-gh-ZFu" id="rZW-jB-jqU"/>
+                        <outlet property="detailImage" destination="ZOk-rR-W44" id="nZW-vw-Ug4"/>
+                        <outlet property="detailName" destination="ZJd-gh-ZFu" id="cUC-R7-N3n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qdh-9U-mqF" userLabel="First Responder" sceneMemberID="firstResponder"/>

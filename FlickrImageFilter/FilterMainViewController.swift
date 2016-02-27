@@ -12,7 +12,8 @@ let reuseCellIdentifier = "reuseCellIdentifier"
 
 class FilterMainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
       UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-     
+    
+    //MARK: @IBOutlet Variables
     @IBOutlet var sliderMenu: UIView!
     @IBOutlet var filtersMenu: UIView!
     @IBOutlet var filtersCollectionViewMenu: UIView!
@@ -21,7 +22,6 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var sliderEditMenu: UISlider!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var applyFilterButton: UIButton!
     @IBOutlet weak var compareButton: UIButton!
@@ -32,6 +32,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var contrastButton: UIButton!
     @IBOutlet weak var brightnessButton: UIButton!
     
+    //MARK: Variables
     var imagePicker = UIImagePickerController()
     var imageFiltered: UIImage!
     var imageOriginal: UIImage!
@@ -40,11 +41,10 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     var filterApplied = false
     var filterType: Filter.FilterType!
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.overlay.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        self.compareButton.enabled = false
-        self.editFilterButton.enabled = false
+        setupUI()
         
         if let defaultImage = imageOriginal {
             self.imageView.image = defaultImage
@@ -53,74 +53,21 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             imageOriginal = imageView.image!
         }
         
-        imageView.userInteractionEnabled = true
         let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleImageLongPress:"))
-        imageView.addGestureRecognizer(longPress)
+        self.imageView.addGestureRecognizer(longPress)
 
-        /*CollectionView Filter Menu*/
-        collectionView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
-        filtersCollectionViewMenu.translatesAutoresizingMaskIntoConstraints = false
-        filtersCollectionViewMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
-        filtersCollectionViewMenu.alpha = 0
-        
-        sliderMenu.translatesAutoresizingMaskIntoConstraints = false
-        sliderMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        sliderMenu.alpha = 0
-        
         filterTypeList = [Filter.FilterType.RedOffset,Filter.FilterType.GreenOffset
             ,Filter.FilterType.BlueOffset,Filter.FilterType.Contrast
             ,Filter.FilterType.Brightness]
         
     }
     
-    private func generateIconForFilterButton(type: Filter.FilterType, button: UIButton){
-        let filter = Filter(img:UIImage(named: "sample"))
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            
-            filter.setDefaultFilter(type)
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                let image = filter.getRGBImage().toUIImage()!
-                button.setBackgroundImage(image, forState: .Normal)
-                
-                button.removeTarget(self, action: "onRed:", forControlEvents: UIControlEvents.TouchUpInside)
-                button.removeTarget(self, action: "onGreen:", forControlEvents: UIControlEvents.TouchUpInside)
-                button.removeTarget(self, action: "onBlue:", forControlEvents: UIControlEvents.TouchUpInside)
-                button.removeTarget(self, action: "onContrast:", forControlEvents: UIControlEvents.TouchUpInside)
-                button.removeTarget(self, action: "onBrightness:", forControlEvents: UIControlEvents.TouchUpInside)
-                
-                switch(type){
-                    case Filter.FilterType.RedOffset:
-                        self.redButton.setBackgroundImage(image, forState: .Normal)
-                        button.addTarget(self, action: "onRed:", forControlEvents: UIControlEvents.TouchUpInside)
-                        break
-                        
-                    case Filter.FilterType.GreenOffset:
-                        self.greenButton.setBackgroundImage(image, forState: .Normal)
-                        button.addTarget(self, action: "onGreen:", forControlEvents: UIControlEvents.TouchUpInside)
-                        break
-                        
-                    case Filter.FilterType.BlueOffset:
-                        self.blueButton.setBackgroundImage(image, forState: .Normal)
-                        button.addTarget(self, action: "onBlue:", forControlEvents: UIControlEvents.TouchUpInside)
-                        break
-                        
-                    case Filter.FilterType.Contrast:
-                        self.contrastButton.setBackgroundImage(image, forState: .Normal)
-                        button.addTarget(self, action: "onContrast:", forControlEvents: UIControlEvents.TouchUpInside)
-                        break
-                        
-                    case Filter.FilterType.Brightness:
-                        self.brightnessButton.setBackgroundImage(image, forState: .Normal)
-                        button.addTarget(self, action: "onBrightness:", forControlEvents: UIControlEvents.TouchUpInside)
-                        break
-                }
-            }
-        }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
+    //MARK: @IBAction Functions
     @IBAction func applyFilterButton(sender: UIButton) {
         if sender.selected {
             hideFiltersMenu()
@@ -135,30 +82,6 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    private func showFiltersMenu(){
-        
-        /*CollectionView Filter Menu*/
-        self.view.addSubview(filtersCollectionViewMenu)
-        
-        let topConstrain = filtersCollectionViewMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
-        let leftConstrain = filtersCollectionViewMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
-        let rightConstrain = filtersCollectionViewMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
-        let heightConstraint = filtersCollectionViewMenu.heightAnchor.constraintEqualToConstant(100)
-        
-        NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain,heightConstraint])
-        
-        view.layoutIfNeeded()
-        filtersCollectionViewMenu.fadeIn(alpha: 1.0, duration: 1.0)
-        
-    }
-    
-    private func hideFiltersMenu(){
-        /*CollectionView Filter Menu*/
-        filtersCollectionViewMenu.fadeOut(duration: 1.0) { (finished) -> Void in
-            self.filtersCollectionViewMenu.removeFromSuperview()
-        }
-    }
-    
     @IBAction func editFilterButton(sender: UIButton) {
         if sender.selected {
             hideSliderMenu()
@@ -169,28 +92,6 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             hideFiltersMenu()
             showSliderMenu()
             sender.selected = true
-        }
-    }
-    
-     private func showSliderMenu(){
-        
-        self.view.addSubview(sliderMenu)
-        
-        let topConstrain = sliderMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
-        let leftConstrain = sliderMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
-        let rightConstrain = sliderMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
-        let heightConstraint = sliderMenu.heightAnchor.constraintEqualToConstant(40)
-        
-        NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain, heightConstraint])
-        
-        view.layoutIfNeeded()
-        sliderMenu.fadeIn(alpha: 1.0, duration: 1.0)
-        
-    }
-    
-    private func hideSliderMenu(){
-        sliderMenu.fadeOut(duration: 1.0) { (finished) -> Void in
-            self.sliderMenu.removeFromSuperview()
         }
     }
     
@@ -219,65 +120,6 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         self.setDefaultFilter(filterType, editValue: Int(sender.value))
     }
     
-    private func setDefaultFilter(type: Filter.FilterType, editValue: Int){
-        let filter = Filter(img:self.imageOriginal)
-        self.filterType = type
-        self.applyFilterInBackground(filter, type: type, editValue: editValue)
-    }
-    
-    private func applyFilterInBackground(filter: Filter, type: Filter.FilterType, editValue: Int){
-        
-        self.activityIndicator.startAnimating()
-        self.view.userInteractionEnabled = false
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            
-            if(editValue > -1){
-                switch(type){
-                    case Filter.FilterType.RedOffset:
-                        filter.setRedOffset(editValue)
-                        break
-                        
-                    case Filter.FilterType.GreenOffset:
-                        filter.setGreenOffset(editValue)
-                        break
-                        
-                    case Filter.FilterType.BlueOffset:
-                        filter.setBlueOffset(editValue)
-                        break
-                        
-                    case Filter.FilterType.Contrast:
-                        filter.setContrast(editValue)
-                        break
-                        
-                    case Filter.FilterType.Brightness:
-                        filter.setBrightness(editValue)
-                        break
-                }
-            } else {
-                filter.setDefaultFilter(type)
-            }
-        
-            dispatch_async(dispatch_get_main_queue()) {
-                
-                self.overlay.fadeOut(duration: 1.0, completion: { (finished) -> Void in
-                    self.overlay.hidden = true
-                })
-                
-                self.imageView.image = filter.getRGBImage().toUIImage()
-                self.imageFiltered = filter.getRGBImage().toUIImage()!
-                
-                self.compareButton.enabled = true
-                self.editFilterButton.enabled = true
-                self.filterApplied = true
-                
-                self.activityIndicator.stopAnimating()
-                self.view.userInteractionEnabled = true
-            }
-        }
-    }
-
     @IBAction func choosePhotoButton(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
             imagePicker.delegate = self
@@ -287,6 +129,12 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
+    @IBAction func compareButton(sender: AnyObject) {
+        toogleImage()
+    }
+    
+    
+    //MARK: UIImagePickerController Functions
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
         
         self.dismissViewControllerAnimated(true) { () -> Void in
@@ -304,12 +152,96 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    @IBAction func compareButton(sender: AnyObject) {
+    //MARK: GestureRecognizer Functions
+    func handleImageLongPress(sender: UILongPressGestureRecognizer) {
        toogleImage()
     }
     
-    func handleImageLongPress(sender: UILongPressGestureRecognizer) {
-       toogleImage()
+    
+    //MARK: Private Functions
+    
+    private func setupUI(){
+        self.compareButton.enabled = false
+        self.editFilterButton.enabled = false
+        self.imageView.userInteractionEnabled = true
+        
+        self.overlay.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        self.collectionView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+        filtersCollectionViewMenu.translatesAutoresizingMaskIntoConstraints = false
+        filtersCollectionViewMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.3)
+        filtersCollectionViewMenu.alpha = 0
+        
+        sliderMenu.translatesAutoresizingMaskIntoConstraints = false
+        sliderMenu.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        sliderMenu.alpha = 0
+    }
+    
+    private func showFiltersMenu(){
+        self.view.addSubview(filtersCollectionViewMenu)
+        
+        let topConstrain = filtersCollectionViewMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
+        let leftConstrain = filtersCollectionViewMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
+        let rightConstrain = filtersCollectionViewMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
+        let heightConstraint = filtersCollectionViewMenu.heightAnchor.constraintEqualToConstant(100)
+        
+        NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain,heightConstraint])
+        
+        view.layoutIfNeeded()
+        filtersCollectionViewMenu.fadeIn(alpha: 1.0, duration: 1.0)
+        
+    }
+    
+    private func hideFiltersMenu(){
+        filtersCollectionViewMenu.fadeOut(duration: 1.0) { (finished) -> Void in
+            self.filtersCollectionViewMenu.removeFromSuperview()
+        }
+    }
+    
+    private func showSliderMenu(){
+        
+        self.view.addSubview(sliderMenu)
+        
+        let topConstrain = sliderMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
+        let leftConstrain = sliderMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
+        let rightConstrain = sliderMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
+        let heightConstraint = sliderMenu.heightAnchor.constraintEqualToConstant(40)
+        
+        NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain, heightConstraint])
+        
+        view.layoutIfNeeded()
+        sliderMenu.fadeIn(alpha: 1.0, duration: 1.0)
+        
+    }
+    
+    private func hideSliderMenu(){
+        sliderMenu.fadeOut(duration: 1.0) { (finished) -> Void in
+            self.sliderMenu.removeFromSuperview()
+        }
+    }
+    
+    private func setDefaultFilter(type: Filter.FilterType, editValue: Int){
+        let filter = Filter(img:self.imageOriginal)
+        self.filterType = type
+        
+        self.activityIndicator.startAnimating()
+        self.view.userInteractionEnabled = false
+        
+        FilterUtils.applyFilterInBackground(filter, type: type, editValue: editValue) { () -> Void in
+            
+            self.overlay.fadeOut(duration: 1.0, completion: { (finished) -> Void in
+                self.overlay.hidden = true
+            })
+            
+            self.imageView.image = filter.getRGBImage().toUIImage()
+            self.imageFiltered = filter.getRGBImage().toUIImage()!
+            
+            self.compareButton.enabled = true
+            self.editFilterButton.enabled = true
+            self.filterApplied = true
+            
+            self.activityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
+        }
     }
     
     private func toogleImage(){
@@ -335,7 +267,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    //#CollectionView Delegate#
+    //MARK: CollectionView Delegate
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -351,13 +283,8 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         let index = indexPath.row
         if index < filterTypeList.count {
             let filterType = filterTypeList[index]
-            generateIconForFilterButton(filterType, button: cell.button!)
+            FilterUtils.generateIconForFilterButton(self, type: filterType, button: cell.button!)
         }
         return cell
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 } 
