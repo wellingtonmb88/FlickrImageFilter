@@ -65,12 +65,103 @@
                                 <action selector="search:" destination="BYZ-38-t0r" id="eHo-nT-d3Z"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tags" id="Jkz-EM-Q85">
+                            <connections>
+                                <segue destination="p4b-Rs-HO4" kind="show" identifier="showTags" id="Db5-zq-Ibn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1101" y="389"/>
+        </scene>
+        <!--Tags-->
+        <scene sceneID="j0U-l8-qqh">
+            <objects>
+                <tableViewController id="p4b-Rs-HO4" customClass="TagsTableViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gbA-Y0-n3q" userLabel="Tags">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagCell" id="y3W-ID-jIE">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y3W-ID-jIE" id="NnU-Zt-ibv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Gw0-aW-g06" kind="show" identifier="showImages" id="zuo-pH-Mmz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p4b-Rs-HO4" id="e9o-fv-xKc"/>
+                            <outlet property="delegate" destination="p4b-Rs-HO4" id="6MF-1U-ZNT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tags" id="oss-5m-Eqb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIf-wz-1ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112" y="-348"/>
+        </scene>
+        <!--Image Feed Table View Controller-->
+        <scene sceneID="4kn-k4-AeA">
+            <objects>
+                <tableViewController id="Gw0-aW-g06" customClass="ImageFeedTableViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" id="7DD-YR-VE2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageFeedItemTableViewCell" rowHeight="181" id="IPC-wQ-UAd" customClass="ImageFeedItemTableViewCell" customModule="FlickrImageFilter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="181"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IPC-wQ-UAd" id="RJ5-UA-w7p">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="181"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9P6-ZI-7hM">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="paq-zt-DvL" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="180"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bm5-zf-BW1">
+                                                    <rect key="frame" x="300" y="0.0" width="300" height="180"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9P6-ZI-7hM" firstAttribute="leading" secondItem="RJ5-UA-w7p" secondAttribute="leading" id="2Sb-5i-lIF"/>
+                                        <constraint firstItem="9P6-ZI-7hM" firstAttribute="centerY" secondItem="RJ5-UA-w7p" secondAttribute="centerY" id="7rc-Fo-nuU"/>
+                                        <constraint firstItem="9P6-ZI-7hM" firstAttribute="top" secondItem="RJ5-UA-w7p" secondAttribute="top" id="NJa-0f-Ln7"/>
+                                        <constraint firstAttribute="trailing" secondItem="9P6-ZI-7hM" secondAttribute="trailing" id="zz7-nk-822"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="itemImageView" destination="paq-zt-DvL" id="Ymh-F6-EDc"/>
+                                    <outlet property="itemTitle" destination="Bm5-zf-BW1" id="joV-QT-lWz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gw0-aW-g06" id="6wn-9n-a6R"/>
+                            <outlet property="delegate" destination="Gw0-aW-g06" id="6oY-Vx-McF"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3UC-gq-FMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871" y="-340"/>
         </scene>
         <!--Feed Details-->
         <scene sceneID="SV2-R8-5tw">
@@ -93,24 +184,36 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
                                 <rect key="frame" x="20" y="78" width="560" height="225"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
-                                <rect key="frame" x="243" y="470" width="114" height="30"/>
-                                <state key="normal" title="Image Filter Tool"/>
-                                <connections>
-                                    <action selector="openImageFilterTool:" destination="OJw-c4-uRE" eventType="touchUpInside" id="kDY-ID-6uA"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="55t-pC-08e">
+                                <rect key="frame" x="179" y="402" width="243" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
+                                        <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
+                                        <state key="normal" title="Image Filter Tool"/>
+                                        <connections>
+                                            <action selector="openImageFilterTool:" destination="OJw-c4-uRE" eventType="touchUpInside" id="kDY-ID-6uA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gm-D4-sHq">
+                                        <rect key="frame" x="129" y="0.0" width="114" height="30"/>
+                                        <state key="normal" title="Add Tag"/>
+                                        <connections>
+                                            <action selector="addTagToFeedItem:" destination="OJw-c4-uRE" eventType="touchUpInside" id="QaD-ps-ddc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="55t-pC-08e" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="4y5-Pg-S6A"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="top" secondItem="ZOk-rR-W44" secondAttribute="bottom" constant="56" id="QXA-Zb-8EX"/>
+                            <constraint firstItem="55t-pC-08e" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="22" id="RC5-QT-lSR"/>
                             <constraint firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="UPw-DE-QpZ"/>
                             <constraint firstItem="ZOk-rR-W44" firstAttribute="top" secondItem="K20-C1-GrK" secondAttribute="bottom" constant="14" id="UfC-bb-KTf"/>
                             <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="220" id="hVU-aa-8Cd"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="kMm-aK-b0M"/>
-                            <constraint firstItem="hIn-cy-btX" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="sfl-Gu-v7Q"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="ZOk-rR-W44" secondAttribute="leading" constant="-20" id="smL-3f-Zp0"/>
-                            <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="hIn-cy-btX" secondAttribute="bottom" constant="100" id="xv1-sR-cFE"/>
                             <constraint firstItem="ZOk-rR-W44" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" constant="20" id="yMq-ZM-IRv"/>
                         </constraints>
                     </view>

@@ -20,6 +20,13 @@
 		13086A311C8206BA001F7D62 /* DownloadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A301C8206BA001F7D62 /* DownloadImageView.swift */; };
 		13086A331C821143001F7D62 /* FilterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A321C821143001F7D62 /* FilterUtils.swift */; };
 		13086A351C822200001F7D62 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A341C822200001F7D62 /* AlertUtils.swift */; };
+		13086A371C822F88001F7D62 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A361C822F88001F7D62 /* TagsTableViewController.swift */; };
+		13086A3D1C822FBE001F7D62 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A391C822FBE001F7D62 /* Tag+CoreDataProperties.swift */; };
+		13086A3E1C822FBE001F7D62 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3A1C822FBE001F7D62 /* Tag.swift */; };
+		13086A3F1C822FBE001F7D62 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3B1C822FBE001F7D62 /* Image+CoreDataProperties.swift */; };
+		13086A401C822FBE001F7D62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3C1C822FBE001F7D62 /* Image.swift */; };
+		13086A421C822FFF001F7D62 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A411C822FFF001F7D62 /* DataController.swift */; };
+		13086A441C823317001F7D62 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13086A431C823317001F7D62 /* CoreData.framework */; };
 		13919B651C800081001E9510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B641C800081001E9510 /* AppDelegate.swift */; };
 		13919B6A1C800081001E9510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13919B681C800081001E9510 /* Main.storyboard */; };
 		13919B6D1C800081001E9510 /* FlickrImageFilter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13919B6B1C800081001E9510 /* FlickrImageFilter.xcdatamodeld */; };
@@ -45,6 +52,13 @@
 		13086A301C8206BA001F7D62 /* DownloadImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadImageView.swift; sourceTree = "<group>"; };
 		13086A321C821143001F7D62 /* FilterUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterUtils.swift; sourceTree = "<group>"; };
 		13086A341C822200001F7D62 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
+		13086A361C822F88001F7D62 /* TagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTableViewController.swift; sourceTree = "<group>"; };
+		13086A391C822FBE001F7D62 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13086A3A1C822FBE001F7D62 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		13086A3B1C822FBE001F7D62 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13086A3C1C822FBE001F7D62 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		13086A411C822FFF001F7D62 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		13086A431C823317001F7D62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		13919B611C800081001E9510 /* FlickrImageFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13919B641C800081001E9510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13919B691C800081001E9510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13086A441C823317001F7D62 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +119,22 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		13086A381C822F9C001F7D62 /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+				13086A391C822FBE001F7D62 /* Tag+CoreDataProperties.swift */,
+				13086A3A1C822FBE001F7D62 /* Tag.swift */,
+				13086A3B1C822FBE001F7D62 /* Image+CoreDataProperties.swift */,
+				13086A3C1C822FBE001F7D62 /* Image.swift */,
+				13919B6B1C800081001E9510 /* FlickrImageFilter.xcdatamodeld */,
+			);
+			name = coredata;
+			sourceTree = "<group>";
+		};
 		13919B581C800081001E9510 = {
 			isa = PBXGroup;
 			children = (
+				13086A431C823317001F7D62 /* CoreData.framework */,
 				13919B631C800081001E9510 /* FlickrImageFilter */,
 				13919B621C800081001E9510 /* Products */,
 			);
@@ -123,6 +151,7 @@
 		13919B631C800081001E9510 /* FlickrImageFilter */ = {
 			isa = PBXGroup;
 			children = (
+				13086A381C822F9C001F7D62 /* coredata */,
 				13086A2B1C81F6A5001F7D62 /* utils */,
 				13086A221C81EACA001F7D62 /* resources */,
 				13086A1B1C81EA8D001F7D62 /* protocol */,
@@ -138,7 +167,6 @@
 				13919B6E1C800081001E9510 /* Assets.xcassets */,
 				13919B701C800081001E9510 /* LaunchScreen.storyboard */,
 				13919B731C800081001E9510 /* Info.plist */,
-				13919B6B1C800081001E9510 /* FlickrImageFilter.xcdatamodeld */,
 			);
 			path = FlickrImageFilter;
 			sourceTree = "<group>";
@@ -156,6 +184,7 @@
 		13919B7B1C8000AB001E9510 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				13086A411C822FFF001F7D62 /* DataController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -173,6 +202,7 @@
 				13086A251C81EB01001F7D62 /* FilterMainViewController.swift */,
 				13919B841C800202001E9510 /* ImageFeedTableViewController.swift */,
 				13086A161C81DC45001F7D62 /* FeedDetailsViewController.swift */,
+				13086A361C822F88001F7D62 /* TagsTableViewController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -262,19 +292,25 @@
 			files = (
 				13086A211C81EAAB001F7D62 /* Filter.swift in Sources */,
 				13086A2D1C81F6DA001F7D62 /* NetworkUtis.swift in Sources */,
+				13086A3D1C822FBE001F7D62 /* Tag+CoreDataProperties.swift in Sources */,
 				13919B7E1C800159001E9510 /* Feed.swift in Sources */,
 				13086A331C821143001F7D62 /* FilterUtils.swift in Sources */,
+				13086A371C822F88001F7D62 /* TagsTableViewController.swift in Sources */,
+				13086A3F1C822FBE001F7D62 /* Image+CoreDataProperties.swift in Sources */,
 				13086A1F1C81EAA2001F7D62 /* RGBAImageUtils.swift in Sources */,
 				13919B831C80018C001E9510 /* ImageFeedItemTableViewCell.swift in Sources */,
+				13086A401C822FBE001F7D62 /* Image.swift in Sources */,
 				13086A171C81DC45001F7D62 /* FeedDetailsViewController.swift in Sources */,
 				13919B651C800081001E9510 /* AppDelegate.swift in Sources */,
 				13086A311C8206BA001F7D62 /* DownloadImageView.swift in Sources */,
 				13086A261C81EB01001F7D62 /* FilterMainViewController.swift in Sources */,
+				13086A3E1C822FBE001F7D62 /* Tag.swift in Sources */,
 				13919B801C800167001E9510 /* FeedItem.swift in Sources */,
 				13086A281C81EB4A001F7D62 /* CollectionViewCell.swift in Sources */,
 				13086A1A1C81EA86001F7D62 /* UIViewExtension.swift in Sources */,
 				13919B6D1C800081001E9510 /* FlickrImageFilter.xcdatamodeld in Sources */,
 				13086A1D1C81EA96001F7D62 /* Filtering.swift in Sources */,
+				13086A421C822FFF001F7D62 /* DataController.swift in Sources */,
 				13919B851C800202001E9510 /* ImageFeedTableViewController.swift in Sources */,
 				13086A351C822200001F7D62 /* AlertUtils.swift in Sources */,
 			);

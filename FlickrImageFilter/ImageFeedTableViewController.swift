@@ -6,21 +6,21 @@
 //  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.
 
 import UIKit
+import CoreData
 
 class ImageFeedTableViewController: UITableViewController { 
     
-    var progress: UIActivityIndicatorView!
-    var feedItem: FeedItem!
+    var progress: UIActivityIndicatorView?
     var feed: Feed? {
         didSet {
             self.tableView.reloadData()
-            progress.stopAnimating()
+            progress?.stopAnimating()
         }
     }
     
     override func viewDidLoad() {
         createProgress()
-        updateFeeds("Earth")
+        self.progress?.startAnimating()
     }
     
     //MARK: @IBAction Functions
@@ -36,14 +36,13 @@ class ImageFeedTableViewController: UITableViewController {
     
     //MARK: Private Functions
     
-    private func updateFeeds(tag: String){
+    func updateFeeds(tag: String){
         
+        self.progress?.startAnimating()
         guard tag.characters.count > 0 else {
             self.errorMessage()
             return
         }
-        
-        progress.startAnimating()
         
         let urlString = "https://api.flickr.com/services/feeds/photos_public.gne?tags=\(tag)&format=json&nojsoncallback=1"
         
@@ -62,13 +61,13 @@ class ImageFeedTableViewController: UITableViewController {
     private func errorMessage(){
         let alertController = AlertUtils.createAlert("Sorry !", message: "No feeds found!")
         self.presentViewController(alertController, animated: true, completion: nil)
-        self.progress.stopAnimating()
+        self.progress?.stopAnimating()
     }
     
     private func createProgress(){
-        progress = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        progress.center = self.view.convertPoint(self.view.center, fromView: self.view.superview)
-        self.view.addSubview(progress)
+        self.progress = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        self.progress?.center = self.view.convertPoint(self.view.center, fromView: self.view.superview)
+        self.view.addSubview(progress!)
     }
     
     //MARK: UITableViewDelegate
@@ -80,12 +79,11 @@ class ImageFeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.feed?.items.count ?? 0
     }
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageFeedItemTableViewCell", forIndexPath: indexPath) as! ImageFeedItemTableViewCell
         
         let item = self.feed!.items[indexPath.row]
-        cell.itemTitle.text = item.title 
+        cell.itemTitle.text = item.title
         cell.itemImageView.setUrl(item.imageURL.absoluteString)
         
         return cell
@@ -96,6 +94,16 @@ class ImageFeedTableViewController: UITableViewController {
            let destination = segue.destinationViewController as? FeedDatailsViewController
             let indexRow = self.tableView.indexPathForSelectedRow?.row
             destination?.feedItem = self.feed!.items[indexRow!]
+        } else if segue.identifier == "showTags" {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let moc = appDelegate.dataController.managedObjectContext
+            
+            let tagsVC = segue.destinationViewController as! TagsTableViewController
+            
+            let request = NSFetchRequest(entityName: "Tag")
+            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            
+            tagsVC.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil) 
         }
     }
 

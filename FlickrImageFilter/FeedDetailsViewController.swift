@@ -25,13 +25,22 @@ class FeedDatailsViewController: UIViewController {
         self.detailImage.setUrl(self.feedItem.imageURL.absoluteString)
     }
     
-    
     @IBAction func openImageFilterTool(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "FilterMain", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("FilterMainViewController") as! FilterMainViewController
         
         vc.imageOriginal = self.detailImage.image
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func addTagToFeedItem(sender: AnyObject) {
+        
+        let alertController = AlertUtils.createAlertWithTextField("Add Tag", message: "Type your tag") { (textFieldValue) -> Void in
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.dataController.tagFeedItem(textFieldValue, feedItem: self.feedItem)
+        }
+        
+        self.presentViewController(alertController, animated: false, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
