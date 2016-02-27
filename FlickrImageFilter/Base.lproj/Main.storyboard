@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--Image Feed Table View Controller-->
+        <!--Feeds-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImageFeedTableViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QmG-Gr-B7l">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="140"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGP-eX-qxL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGP-eX-qxL">
                                                     <rect key="frame" x="300" y="0.0" width="300" height="140"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,6 +49,7 @@
                                 <connections>
                                     <outlet property="itemImageView" destination="QmG-Gr-B7l" id="TVI-qz-fSM"/>
                                     <outlet property="itemTitle" destination="hGP-eX-qxL" id="ou3-Mx-VLM"/>
+                                    <segue destination="OJw-c4-uRE" kind="show" identifier="feedDetailsSegue" id="JUK-aa-tjW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -57,12 +58,59 @@
                             <outlet property="delegate" destination="BYZ-38-t0r" id="Y2Z-Ii-hS0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Mo9-ac-5bF"/>
+                    <navigationItem key="navigationItem" title="Feeds" id="Mo9-ac-5bF">
+                        <barButtonItem key="backBarButtonItem" title="Feeds" id="yt6-OR-alX"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1101" y="389"/>
+        </scene>
+        <!--FeedDetails-->
+        <scene sceneID="SV2-R8-5tw">
+            <objects>
+                <viewController title="FeedDetails" id="OJw-c4-uRE" customClass="FeedDatailsViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K20-C1-GrK"/>
+                        <viewControllerLayoutGuide type="bottom" id="MGS-fx-tdw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="maK-y2-vp7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
+                                <rect key="frame" x="0.0" y="359" width="600" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wSz-ux-jnj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44">
+                                <rect key="frame" x="20" y="78" width="560" height="225"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="top" secondItem="ZOk-rR-W44" secondAttribute="bottom" constant="56" id="QXA-Zb-8EX"/>
+                            <constraint firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="UPw-DE-QpZ"/>
+                            <constraint firstItem="ZOk-rR-W44" firstAttribute="top" secondItem="K20-C1-GrK" secondAttribute="bottom" constant="14" id="UfC-bb-KTf"/>
+                            <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="220" id="hVU-aa-8Cd"/>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="kMm-aK-b0M"/>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="ZOk-rR-W44" secondAttribute="leading" constant="-20" id="smL-3f-Zp0"/>
+                            <constraint firstItem="ZOk-rR-W44" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" constant="20" id="yMq-ZM-IRv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="feedImage" destination="ZOk-rR-W44" id="Zp1-f6-n6S"/>
+                        <outlet property="feedName" destination="ZJd-gh-ZFu" id="rZW-jB-jqU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qdh-9U-mqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="389"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lpr-nZ-hqv">

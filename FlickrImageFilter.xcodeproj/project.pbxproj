@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13086A171C81DC45001F7D62 /* FeedDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A161C81DC45001F7D62 /* FeedDetailsViewController.swift */; };
 		13919B651C800081001E9510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B641C800081001E9510 /* AppDelegate.swift */; };
 		13919B671C800081001E9510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B661C800081001E9510 /* ViewController.swift */; };
 		13919B6A1C800081001E9510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13919B681C800081001E9510 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13086A161C81DC45001F7D62 /* FeedDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedDetailsViewController.swift; sourceTree = "<group>"; };
 		13919B611C800081001E9510 /* FlickrImageFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13919B641C800081001E9510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13919B661C800081001E9510 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +102,6 @@
 		13919B7B1C8000AB001E9510 /* controler */ = {
 			isa = PBXGroup;
 			children = (
-				13919B841C800202001E9510 /* ImageFeedTableViewController.swift */,
 			);
 			name = controler;
 			sourceTree = "<group>";
@@ -115,6 +116,8 @@
 		13919B811C800175001E9510 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				13919B841C800202001E9510 /* ImageFeedTableViewController.swift */,
+				13086A161C81DC45001F7D62 /* FeedDetailsViewController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				13919B671C800081001E9510 /* ViewController.swift in Sources */,
 				13919B7E1C800159001E9510 /* Feed.swift in Sources */,
 				13919B831C80018C001E9510 /* ImageFeedItemTableViewCell.swift in Sources */,
+				13086A171C81DC45001F7D62 /* FeedDetailsViewController.swift in Sources */,
 				13919B651C800081001E9510 /* AppDelegate.swift in Sources */,
 				13919B801C800167001E9510 /* FeedItem.swift in Sources */,
 				13919B6D1C800081001E9510 /* FlickrImageFilter.xcdatamodeld in Sources */,
@@ -354,6 +358,7 @@
 				13919B781C800081001E9510 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

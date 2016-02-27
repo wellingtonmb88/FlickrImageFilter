@@ -2,8 +2,8 @@
 //  FeedItem.swift
 //  PhotoFeed
 //
-//  Created by Mike Spears on 2016-01-08.
-//  Copyright © 2016 YourOganisation. All rights reserved.
+//  Created by WELLINGTON BARBOSA on 2/26/16.
+//  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.
 //
 
 import Foundation

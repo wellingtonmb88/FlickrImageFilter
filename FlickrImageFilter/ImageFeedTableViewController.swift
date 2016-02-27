@@ -2,9 +2,8 @@
 //  ImageFeedTableViewController.swift
 //  PhotoFeed
 //
-//  Created by Mike Spears on 2016-01-08.
-//  Copyright © 2016 YourOganisation. All rights reserved.
-//
+//  Created by WELLINGTON BARBOSA on 2/26/16.
+//  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.
 
 import UIKit
 
@@ -15,6 +14,8 @@ class ImageFeedTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
+    var feedItem: FeedItem!
 
     var urlSession: NSURLSession!
 
@@ -67,10 +68,20 @@ class ImageFeedTableViewController: UITableViewController {
         
         return cell
     }
-
+  
+    
     override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? ImageFeedItemTableViewCell {
             cell.dataTask?.cancel()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "feedDetailsSegue" {
+           let destination = segue.destinationViewController as? FeedDatailsViewController
+            let indexRow = self.tableView.indexPathForSelectedRow?.row
+            
+            destination?.feedItem = self.feed!.items[indexRow!]
         }
     }
 
