@@ -91,6 +91,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44">
                                 <rect key="frame" x="20" y="78" width="560" height="225"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
+                                <rect key="frame" x="243" y="470" width="114" height="30"/>
+                                <state key="normal" title="Image Filter Tool"/>
+                                <connections>
+                                    <action selector="openImageFilterTool:" destination="OJw-c4-uRE" eventType="touchUpInside" id="kDY-ID-6uA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -99,7 +106,9 @@
                             <constraint firstItem="ZOk-rR-W44" firstAttribute="top" secondItem="K20-C1-GrK" secondAttribute="bottom" constant="14" id="UfC-bb-KTf"/>
                             <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="220" id="hVU-aa-8Cd"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="kMm-aK-b0M"/>
+                            <constraint firstItem="hIn-cy-btX" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="sfl-Gu-v7Q"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="ZOk-rR-W44" secondAttribute="leading" constant="-20" id="smL-3f-Zp0"/>
+                            <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="hIn-cy-btX" secondAttribute="bottom" constant="100" id="xv1-sR-cFE"/>
                             <constraint firstItem="ZOk-rR-W44" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" constant="20" id="yMq-ZM-IRv"/>
                         </constraints>
                     </view>

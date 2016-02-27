@@ -20,6 +20,12 @@ class FeedDatailsViewController: UIViewController {
     var dataTask: NSURLSessionDataTask! 
     
 
+    override func viewWillAppear(animated: Bool) {
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        self.urlSession = NSURLSession(configuration: configuration)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.urlSession.invalidateAndCancel()
@@ -48,6 +54,15 @@ class FeedDatailsViewController: UIViewController {
         }
         
         dataTask.resume()
+    }
+    
+    
+    @IBAction func openImageFilterTool(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "FilterMain", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("FilterMainViewController") as! FilterMainViewController
+        
+        vc.imageOriginal = self.feedImage.image
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

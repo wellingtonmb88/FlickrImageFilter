@@ -10,7 +10,7 @@ import UIKit
 
 let reuseCellIdentifier = "reuseCellIdentifier"
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
+class FilterMainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
       UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
      
     @IBOutlet var sliderMenu: UIView!
@@ -45,8 +45,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.overlay.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         self.compareButton.enabled = false
         self.editFilterButton.enabled = false
-        self.imageView.image = UIImage(named: "sample")
-        imageOriginal = imageView.image!
+        
+        if let defaultImage = imageOriginal {
+            self.imageView.image = defaultImage
+        }else{
+            self.imageView.image = UIImage(named: "sample")
+            imageOriginal = imageView.image!
+        }
+        
         imageView.userInteractionEnabled = true
         let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleImageLongPress:"))
         imageView.addGestureRecognizer(longPress)
