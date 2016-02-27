@@ -60,6 +60,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Feeds" id="Mo9-ac-5bF">
                         <barButtonItem key="backBarButtonItem" title="Feeds" id="yt6-OR-alX"/>
+                        <barButtonItem key="leftBarButtonItem" title="Search" id="W94-Hm-6qu">
+                            <connections>
+                                <action selector="search:" destination="BYZ-38-t0r" id="eHo-nT-d3Z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
@@ -67,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1101" y="389"/>
         </scene>
-        <!--FeedDetails-->
+        <!--Feed Details-->
         <scene sceneID="SV2-R8-5tw">
             <objects>
-                <viewController title="FeedDetails" id="OJw-c4-uRE" customClass="FeedDatailsViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Feed Details" id="OJw-c4-uRE" customClass="FeedDatailsViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K20-C1-GrK"/>
                         <viewControllerLayoutGuide type="bottom" id="MGS-fx-tdw"/>
@@ -79,11 +84,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
                                 <rect key="frame" x="0.0" y="359" width="600" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="wSz-ux-jnj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

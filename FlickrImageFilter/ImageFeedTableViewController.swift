@@ -10,7 +10,7 @@ import UIKit
 class ImageFeedTableViewController: UITableViewController { 
     
     var progress: UIActivityIndicatorView!
-    
+    var feedItem: FeedItem!
     var feed: Feed? {
         didSet {
             self.tableView.reloadData()
@@ -18,28 +18,60 @@ class ImageFeedTableViewController: UITableViewController {
         }
     }
     
-    var feedItem: FeedItem!
- 
-    func createProgress(){
-        progress = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        progress.center = self.tableView.convertPoint(self.tableView.center, fromView: self.tableView.superview)
-        self.tableView.addSubview(progress)
+    override func viewDidLoad() {
+        createProgress()
+        updateFeeds("Earth")
     }
     
-    override func viewDidLoad() {
-        let urlString = "https://api.flickr.com/services/feeds/photos_public.gne?tags=skateboard&format=json&nojsoncallback=1" //
-        print(urlString)
-        createProgress()
-
+    //MARK: @IBAction Functions
+    
+    @IBAction func search(sender: AnyObject) {
+        
+        let alertController = AlertUtils.createAlertWithTextField("Search by Tag!", message: "Type your tag", okActionHandler: { (textFieldValue) -> Void in
+            self.updateFeeds(textFieldValue)
+        })
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: Private Functions
+    
+    private func updateFeeds(tag: String){
+        
+        guard tag.characters.count > 0 else {
+            self.errorMessage()
+            return
+        }
         
         progress.startAnimating()
+        
+        let urlString = "https://api.flickr.com/services/feeds/photos_public.gne?tags=\(tag)&format=json&nojsoncallback=1"
+        
         if let url = NSURL(string: urlString) {
             NetworkUtils.updateFeed(url, completion: { (feed) -> Void in
+                
+                guard feed?.items.count > 0 else{
+                    self.errorMessage()
+                    return
+                }
                 self.feed = feed
             })
         }
-
     }
+    
+    private func errorMessage(){
+        let alertController = AlertUtils.createAlert("Sorry !", message: "No feeds found!")
+        self.presentViewController(alertController, animated: true, completion: nil)
+        self.progress.stopAnimating()
+    }
+    
+    private func createProgress(){
+        progress = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        progress.center = self.view.convertPoint(self.view.center, fromView: self.view.superview)
+        self.view.addSubview(progress)
+    }
+    
+    //MARK: UITableViewDelegate
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
