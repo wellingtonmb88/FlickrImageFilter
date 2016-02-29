@@ -11,8 +11,9 @@ import UIKit
 class FeedDatailsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var detailImage: DownloadImageView!
-    
     @IBOutlet weak var detailName: UILabel!
+    @IBOutlet weak var zoomGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var feedItem: FeedItem!
     
@@ -50,6 +51,12 @@ class FeedDatailsViewController: UIViewController, UIScrollViewDelegate {
         
         self.presentViewController(alertController, animated: false, completion: nil)
     }
+    
+    @IBAction func onTap(sender: AnyObject) {
+        UIView.animateWithDuration(0.4) { () -> Void in
+            self.scrollView.zoomScale = 1.5 * self.scrollView.zoomScale
+        }
+    } 
     
     //MARK: UIScrollView Delegate
     

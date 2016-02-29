@@ -32,6 +32,8 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var contrastButton: UIButton!
     @IBOutlet weak var brightnessButton: UIButton!
     @IBOutlet weak var addTagBarButton: UIBarButtonItem!
+    @IBOutlet weak var zoomTapGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: Variables
     var imagePicker = UIImagePickerController()
@@ -58,6 +60,8 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         
         let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleImageLongPress:"))
         self.imageView.addGestureRecognizer(longPress)
+        
+        zoomTapGestureRecognizer.numberOfTapsRequired = 2
 
         filterTypeList = [Filter.FilterType.RedOffset,Filter.FilterType.GreenOffset
             ,Filter.FilterType.BlueOffset,Filter.FilterType.Contrast
@@ -151,6 +155,12 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     }
     
     
+    @IBAction func onTap(sender: AnyObject) {
+        UIView.animateWithDuration(0.4) { () -> Void in
+            self.scrollView.zoomScale = 1.5 * self.scrollView.zoomScale
+        }
+    }
+    
     //MARK: UIImagePickerController Functions
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
         
@@ -199,8 +209,8 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         self.view.addSubview(filtersCollectionViewMenu)
         
         let topConstrain = filtersCollectionViewMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
-        let leftConstrain = filtersCollectionViewMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
-        let rightConstrain = filtersCollectionViewMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
+        let leftConstrain = filtersCollectionViewMenu.leftAnchor.constraintEqualToAnchor(scrollView.leftAnchor)
+        let rightConstrain = filtersCollectionViewMenu.rightAnchor.constraintEqualToAnchor(scrollView.rightAnchor)
         let heightConstraint = filtersCollectionViewMenu.heightAnchor.constraintEqualToConstant(100)
         
         NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain,heightConstraint])
@@ -221,8 +231,8 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         self.view.addSubview(sliderMenu)
         
         let topConstrain = sliderMenu.bottomAnchor.constraintEqualToAnchor(bottomMenu.topAnchor)
-        let leftConstrain = sliderMenu.leftAnchor.constraintEqualToAnchor(imageView.leftAnchor)
-        let rightConstrain = sliderMenu.rightAnchor.constraintEqualToAnchor(imageView.rightAnchor)
+        let leftConstrain = sliderMenu.leftAnchor.constraintEqualToAnchor(scrollView.leftAnchor)
+        let rightConstrain = sliderMenu.rightAnchor.constraintEqualToAnchor(scrollView.rightAnchor)
         let heightConstraint = sliderMenu.heightAnchor.constraintEqualToConstant(40)
         
         NSLayoutConstraint.activateConstraints([topConstrain, leftConstrain, rightConstrain, heightConstraint])

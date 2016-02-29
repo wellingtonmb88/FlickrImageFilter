@@ -24,6 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="569"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="SXm-p3-fqI" secondAttribute="bottom" id="C7Y-tQ-EuN"/>
                                     <constraint firstItem="SXm-p3-fqI" firstAttribute="top" secondItem="cHU-KK-ulM" secondAttribute="top" id="QB2-Jn-8ZU"/>
@@ -34,13 +35,14 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Dii-F8-hfo"/>
+                                    <outletCollection property="gestureRecognizers" destination="vPo-gX-Uea" appends="YES" id="zc3-Sv-Xam"/>
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyM-ff-wpR">
-                                <rect key="frame" x="20" y="64" width="560" height="42"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROn-x0-dA9">
-                                        <rect key="frame" x="245.5" y="8" width="69.5" height="24"/>
+                                        <rect key="frame" x="265.5" y="8" width="69.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="mLi-3E-glg"/>
                                         </constraints>
@@ -103,8 +105,8 @@
                             <constraint firstItem="IyM-ff-wpR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KUR-sS-NMe"/>
                             <constraint firstItem="cHU-KK-ulM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LKr-Er-EHj"/>
                             <constraint firstItem="eve-Cb-xYY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R3Z-bd-3bu"/>
-                            <constraint firstAttribute="trailing" secondItem="IyM-ff-wpR" secondAttribute="trailing" constant="20" id="S78-gM-MT3"/>
-                            <constraint firstItem="IyM-ff-wpR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hQ3-Ch-DUu"/>
+                            <constraint firstAttribute="trailing" secondItem="IyM-ff-wpR" secondAttribute="trailing" id="S78-gM-MT3"/>
+                            <constraint firstItem="IyM-ff-wpR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hQ3-Ch-DUu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cHU-KK-ulM" secondAttribute="bottom" constant="31" id="krG-K2-Dnn"/>
                             <constraint firstItem="eve-Cb-xYY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lzS-lG-tm5"/>
                             <constraint firstItem="yTZ-Ra-fBZ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="moa-ZV-Vh9"/>
@@ -137,8 +139,10 @@
                         <outlet property="imageView" destination="SXm-p3-fqI" id="BDy-Uh-Gbn"/>
                         <outlet property="overlay" destination="IyM-ff-wpR" id="FhX-Mw-DOD"/>
                         <outlet property="redButton" destination="I0k-nE-3g0" id="UkR-Dd-45c"/>
+                        <outlet property="scrollView" destination="cHU-KK-ulM" id="8jV-fq-XLH"/>
                         <outlet property="sliderEditMenu" destination="Lz2-G0-x5e" id="lfk-Gb-JYq"/>
                         <outlet property="sliderMenu" destination="pDW-WS-75n" id="LNp-sZ-TCZ"/>
+                        <outlet property="zoomTapGestureRecognizer" destination="vPo-gX-Uea" id="OWZ-6b-M6c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -277,6 +281,11 @@
                         <constraint firstAttribute="bottom" secondItem="bHp-mj-V69" secondAttribute="bottom" id="wUW-TV-IDu"/>
                     </constraints>
                 </view>
+                <tapGestureRecognizer id="vPo-gX-Uea">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="NZj-ui-cN4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="796" y="364"/>
         </scene>
