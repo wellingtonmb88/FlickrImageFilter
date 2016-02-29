@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Filter Tool-->
@@ -17,22 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SXm-p3-fqI" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="560" height="507"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvs-bE-4ec">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="571"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SXm-p3-fqI" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="571"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1200" id="KUw-Cl-Fxa"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="551" id="7Fs-Eb-D2W"/>
+                                    <constraint firstItem="SXm-p3-fqI" firstAttribute="top" secondItem="Gvs-bE-4ec" secondAttribute="top" id="0sS-Tt-ebK"/>
+                                    <constraint firstItem="SXm-p3-fqI" firstAttribute="centerY" secondItem="Gvs-bE-4ec" secondAttribute="centerY" id="1pL-72-Mpe"/>
+                                    <constraint firstAttribute="trailing" secondItem="SXm-p3-fqI" secondAttribute="trailing" id="3yt-27-8Cf"/>
+                                    <constraint firstAttribute="baseline" secondItem="SXm-p3-fqI" secondAttribute="bottom" id="NFb-eW-ab3"/>
+                                    <constraint firstItem="SXm-p3-fqI" firstAttribute="leading" secondItem="Gvs-bE-4ec" secondAttribute="leading" id="tpE-BE-OSm"/>
+                                    <constraint firstAttribute="bottom" secondItem="SXm-p3-fqI" secondAttribute="bottom" id="zFK-F0-Gqx"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7Fs-Eb-D2W"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyM-ff-wpR">
                                 <rect key="frame" x="20" y="64" width="560" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROn-x0-dA9">
-                                        <rect key="frame" x="245" y="8" width="69.5" height="24"/>
+                                        <rect key="frame" x="245.5" y="8" width="69.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="mLi-3E-glg"/>
                                         </constraints>
@@ -88,20 +97,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SXm-p3-fqI" secondAttribute="trailing" constant="20" id="CEp-QX-t1M"/>
+                            <constraint firstItem="Gvs-bE-4ec" firstAttribute="top" secondItem="IyM-ff-wpR" secondAttribute="top" constant="-64" id="9oo-Pc-zi8"/>
                             <constraint firstAttribute="trailing" secondItem="yTZ-Ra-fBZ" secondAttribute="trailing" id="Ere-DG-FBY"/>
                             <constraint firstItem="yTZ-Ra-fBZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GE2-Oi-5Gu"/>
-                            <constraint firstItem="SXm-p3-fqI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="JjN-Rr-osx"/>
                             <constraint firstItem="IyM-ff-wpR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KUR-sS-NMe"/>
-                            <constraint firstItem="SXm-p3-fqI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OLj-vA-bYU"/>
                             <constraint firstItem="eve-Cb-xYY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R3Z-bd-3bu"/>
                             <constraint firstAttribute="trailing" secondItem="IyM-ff-wpR" secondAttribute="trailing" constant="20" id="S78-gM-MT3"/>
-                            <constraint firstItem="SXm-p3-fqI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UN4-aI-UAk"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SXm-p3-fqI" secondAttribute="bottom" constant="29" id="esX-gF-ENt"/>
+                            <constraint firstItem="Gvs-bE-4ec" firstAttribute="trailing" secondItem="yTZ-Ra-fBZ" secondAttribute="trailing" id="bUn-xZ-pRR"/>
                             <constraint firstItem="IyM-ff-wpR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hQ3-Ch-DUu"/>
                             <constraint firstItem="eve-Cb-xYY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lzS-lG-tm5"/>
                             <constraint firstItem="yTZ-Ra-fBZ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="moa-ZV-Vh9"/>
                             <constraint firstItem="yTZ-Ra-fBZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pFF-A3-g7I"/>
+                            <constraint firstItem="Gvs-bE-4ec" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wZg-3r-kIN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gvs-bE-4ec" secondAttribute="bottom" constant="29" id="wh8-dC-x5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yTZ-Ra-fBZ" secondAttribute="bottom" id="xP7-O2-49L"/>
                             <constraint firstItem="IyM-ff-wpR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xZe-Me-odV"/>
                         </constraints>
