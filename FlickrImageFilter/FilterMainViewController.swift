@@ -226,7 +226,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         self.activityIndicator.startAnimating()
         self.view.userInteractionEnabled = false
         
-        FilterUtils.applyFilterInBackground(filter, type: type, editValue: editValue) { () -> Void in
+        Filter.applyFilterInBackground(filter, type: type, editValue: editValue) { () -> Void in
             
             self.overlay.fadeOut(duration: 1.0, completion: { (finished) -> Void in
                 self.overlay.hidden = true
@@ -283,7 +283,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         let index = indexPath.row
         if index < filterTypeList.count {
             let filterType = filterTypeList[index]
-            FilterUtils.generateIconForFilterButton(self, type: filterType, button: cell.button!)
+            Filter.generateIconForFilterButton(self, type: filterType, button: cell.button!)
         }
         return cell
     }
