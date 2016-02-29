@@ -30,6 +30,7 @@ class FeedDatailsViewController: UIViewController {
         let vc = storyboard.instantiateViewControllerWithIdentifier("FilterMainViewController") as! FilterMainViewController
         
         vc.imageOriginal = self.detailImage.image
+        vc.feedItem = self.feedItem
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

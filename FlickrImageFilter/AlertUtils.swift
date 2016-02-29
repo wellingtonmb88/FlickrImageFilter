@@ -16,8 +16,7 @@ struct AlertUtils {
         
         let defaultAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
             if let textValue = alertController.textFields![0].text {
-                okActionHandler(textFieldValue: textValue.stringByReplacingOccurrencesOfString(" ", withString: "",
-                    options: NSStringCompareOptions.LiteralSearch, range: nil))
+                okActionHandler(textFieldValue: textValue)
             }
         }
         

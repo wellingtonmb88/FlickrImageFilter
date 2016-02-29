@@ -28,7 +28,9 @@ class ImageFeedTableViewController: UITableViewController {
     @IBAction func search(sender: AnyObject) {
         
         let alertController = AlertUtils.createAlertWithTextField("Search by Tag!", message: "Type your tag", okActionHandler: { (textFieldValue) -> Void in
-            self.updateFeeds(textFieldValue)
+           let text = textFieldValue.stringByReplacingOccurrencesOfString(" ", withString: "",
+                options: NSStringCompareOptions.LiteralSearch, range: nil)
+            self.updateFeeds(text)
         })
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -84,7 +86,11 @@ class ImageFeedTableViewController: UITableViewController {
         
         let item = self.feed!.items[indexPath.row]
         cell.itemTitle.text = item.title
-        cell.itemImageView.setUrl(item.imageURL.absoluteString)
+        if item.isFiltered == 1 {
+            cell.itemImageView.downlaodCachedFilteredImg(item.imageURL.absoluteString)
+        } else {
+            cell.itemImageView.setUrl(item.imageURL.absoluteString)
+        }
         
         return cell
     } 

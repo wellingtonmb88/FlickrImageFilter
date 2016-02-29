@@ -68,6 +68,7 @@ class DataController {
         
         newImage.title = feedItem.title
         newImage.imageURL = feedItem.imageURL.absoluteString
+        newImage.isFiltered = feedItem.isFiltered
         newImage.tag = tag
 
         

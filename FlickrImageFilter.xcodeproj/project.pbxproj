@@ -25,7 +25,6 @@
 		13086A3F1C822FBE001F7D62 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3B1C822FBE001F7D62 /* Image+CoreDataProperties.swift */; };
 		13086A401C822FBE001F7D62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3C1C822FBE001F7D62 /* Image.swift */; };
 		13086A421C822FFF001F7D62 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A411C822FFF001F7D62 /* DataController.swift */; };
-		13086A441C823317001F7D62 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13086A431C823317001F7D62 /* CoreData.framework */; };
 		13919B651C800081001E9510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B641C800081001E9510 /* AppDelegate.swift */; };
 		13919B6A1C800081001E9510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13919B681C800081001E9510 /* Main.storyboard */; };
 		13919B6D1C800081001E9510 /* FlickrImageFilter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13919B6B1C800081001E9510 /* FlickrImageFilter.xcdatamodeld */; };
@@ -56,7 +55,6 @@
 		13086A3B1C822FBE001F7D62 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13086A3C1C822FBE001F7D62 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		13086A411C822FFF001F7D62 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		13086A431C823317001F7D62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		13919B611C800081001E9510 /* FlickrImageFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13919B641C800081001E9510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13919B691C800081001E9510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13086A441C823317001F7D62 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +129,6 @@
 		13919B581C800081001E9510 = {
 			isa = PBXGroup;
 			children = (
-				13086A431C823317001F7D62 /* CoreData.framework */,
 				13919B631C800081001E9510 /* FlickrImageFilter */,
 				13919B621C800081001E9510 /* Products */,
 			);
@@ -156,7 +152,6 @@
 				13086A181C81EA7B001F7D62 /* extension */,
 				13919B861C80020B001E9510 /* custom */,
 				13919B811C800175001E9510 /* view */,
-				13919B7C1C8000B8001E9510 /* presenter */,
 				13919B7B1C8000AB001E9510 /* controller */,
 				13919B7A1C8000A3001E9510 /* model */,
 				13919B641C800081001E9510 /* AppDelegate.swift */,
@@ -184,13 +179,6 @@
 				13086A411C822FFF001F7D62 /* DataController.swift */,
 			);
 			name = controller;
-			sourceTree = "<group>";
-		};
-		13919B7C1C8000B8001E9510 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = presenter;
 			sourceTree = "<group>";
 		};
 		13919B811C800175001E9510 /* view */ = {

@@ -16,6 +16,7 @@ extension Image {
 
     @NSManaged var imageURL: String?
     @NSManaged var title: String?
+    @NSManaged var isFiltered: NSNumber?
     @NSManaged var tag: Tag?
 
 }

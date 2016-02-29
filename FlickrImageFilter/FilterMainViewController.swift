@@ -19,7 +19,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet var filtersCollectionViewMenu: UIView!
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var bottomMenu: UIStackView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: DownloadImageView!
     @IBOutlet weak var sliderEditMenu: UISlider!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -31,6 +31,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var contrastButton: UIButton!
     @IBOutlet weak var brightnessButton: UIButton!
+    @IBOutlet weak var addTagBarButton: UIBarButtonItem!
     
     //MARK: Variables
     var imagePicker = UIImagePickerController()
@@ -40,6 +41,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     var filterTypeList: [Filter.FilterType]! 
     var filterApplied = false
     var filterType: Filter.FilterType!
+    var feedItem: FeedItem!
     
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -50,6 +52,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             self.imageView.image = defaultImage
         }else{
             self.imageView.image = UIImage(named: "sample")
+            
             imageOriginal = imageView.image!
         }
         
@@ -133,6 +136,20 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
         toogleImage()
     }
     
+    @IBAction func addTag(sender: AnyObject) {
+        let alertController = AlertUtils.createAlertWithTextField("Add Tag", message: "Type your tag") { (textFieldValue) -> Void in
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            self.feedItem.isFiltered = 1
+            
+            self.imageView.cacheFilteredImg(self.feedItem.imageURL.absoluteString)
+            
+            appDelegate.dataController.tagFeedItem(textFieldValue, feedItem: self.feedItem)
+        }
+        
+        self.presentViewController(alertController, animated: false, completion: nil)
+    }
+    
     
     //MARK: UIImagePickerController Functions
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
@@ -148,6 +165,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             self.overlay.fadeIn(alpha: 1.0 ,duration: 2.0)
             self.compareButton.enabled = false
             self.editFilterButton.enabled = false
+            self.addTagBarButton.enabled = false;
             self.filterApplied = false
         }
     }
@@ -163,6 +181,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     private func setupUI(){
         self.compareButton.enabled = false
         self.editFilterButton.enabled = false
+        self.addTagBarButton.enabled = false;
         self.imageView.userInteractionEnabled = true
         
         self.overlay.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
@@ -237,6 +256,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             
             self.compareButton.enabled = true
             self.editFilterButton.enabled = true
+            self.addTagBarButton.enabled = true;
             self.filterApplied = true
             
             self.activityIndicator.stopAnimating()
@@ -247,6 +267,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
     private func toogleImage(){
         if self.compareButton.enabled {
             
+            self.addTagBarButton.enabled = false
             let fadeInDuration = 2.0
             let fadeOutDuration = 1.5
             
@@ -261,11 +282,13 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
                     self.overlay.hidden = true
                     self.imageView.image = self.imageFiltered
                     self.filterApplied = true
+                    self.addTagBarButton.enabled = true
                 }
                 self.imageView.fadeIn(alpha: 1.0 ,duration: fadeInDuration)
             })
         }
     }
+    
     
     //MARK: CollectionView Delegate
     

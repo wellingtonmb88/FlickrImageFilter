@@ -29,7 +29,23 @@ class DownloadImageView: UIImageView {
     }
     
     func setUrl(url: String){
-        setUrl(url, cache: false)
+        setUrl(url, cache: true)
+    }
+    
+    func cacheFilteredImg(url: String){
+        
+        queue.cancelAllOperations()
+        var path = replace(url, _string: "/", _withString: "_")
+        path = replace(path, _string: "\\", _withString: "_")
+        path = replace(path, _string: ":", _withString: "_")
+        path = replace(path, _string: ".jpg", _withString: "_Filtered.jpg")
+        path = NSHomeDirectory() + "/Documents/" + path
+         
+        queue.addOperationWithBlock(
+            {
+                let imageData: NSData = UIImagePNGRepresentation(self.image!)!
+                imageData.writeToFile(path, atomically: true)
+            })
     }
     
     func setUrl(url: String, cache: Bool){
@@ -58,6 +74,20 @@ class DownloadImageView: UIImageView {
                 data.writeToFile(path, atomically: true)
             }
         }
+        mainQueue.addOperationWithBlock({self.showImg(data)})
+    }
+    
+    func downlaodCachedFilteredImg(url: String){
+        var data: NSData!
+        
+        var path = replace(url, _string: "/", _withString: "_")
+        path = replace(path, _string: "\\", _withString: "_")
+        path = replace(path, _string: ":", _withString: "_")
+        path = replace(path, _string: ".jpg", _withString: "_Filtered.jpg")
+        path = NSHomeDirectory() + "/Documents/" + path
+        
+        data = NSData(contentsOfFile: path)
+        
         mainQueue.addOperationWithBlock({self.showImg(data)})
     }
     
