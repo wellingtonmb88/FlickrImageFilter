@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedDatailsViewController: UIViewController {
+class FeedDatailsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var detailImage: DownloadImageView!
     
@@ -24,6 +24,13 @@ class FeedDatailsViewController: UIViewController {
         
         self.detailImage.setUrl(self.feedItem.imageURL.absoluteString)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: @IBAction Functions
     
     @IBAction func openImageFilterTool(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "FilterMain", bundle: nil)
@@ -44,10 +51,9 @@ class FeedDatailsViewController: UIViewController {
         self.presentViewController(alertController, animated: false, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: UIScrollView Delegate
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.detailImage
     }
-    
-    
 }

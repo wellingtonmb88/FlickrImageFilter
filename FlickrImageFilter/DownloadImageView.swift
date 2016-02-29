@@ -29,7 +29,7 @@ class DownloadImageView: UIImageView {
     }
     
     func setUrl(url: String){
-        setUrl(url, cache: true)
+        setUrl(url, cache: false)
     }
     
     func cacheFilteredImg(url: String){

@@ -175,17 +175,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
-                                <rect key="frame" x="0.0" y="359" width="600" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
-                                <rect key="frame" x="20" y="78" width="560" height="225.5"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="NKk-cp-eDL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="359"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="359"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" id="1Uq-eU-nQA"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZOk-rR-W44" secondAttribute="bottom" id="Bba-6H-ptO"/>
+                                    <constraint firstItem="ZOk-rR-W44" firstAttribute="centerY" secondItem="NKk-cp-eDL" secondAttribute="centerY" id="HcT-Gv-q9m"/>
+                                    <constraint firstItem="ZOk-rR-W44" firstAttribute="leading" secondItem="NKk-cp-eDL" secondAttribute="leading" id="MbI-sW-aAH"/>
+                                    <constraint firstItem="ZOk-rR-W44" firstAttribute="centerX" secondItem="NKk-cp-eDL" secondAttribute="centerX" id="PxB-Sb-b6d"/>
+                                    <constraint firstItem="ZOk-rR-W44" firstAttribute="top" secondItem="NKk-cp-eDL" secondAttribute="top" id="Tc0-3O-eUv"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="OJw-c4-uRE" id="9lF-Yz-SHW"/>
+                                </connections>
+                            </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="55t-pC-08e">
-                                <rect key="frame" x="224.5" y="402" width="151" height="30"/>
+                                <rect key="frame" x="225" y="402" width="151" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="30"/>
@@ -203,18 +213,27 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
+                                <rect key="frame" x="0.0" y="359" width="600" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ufa-mp-x6M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="55t-pC-08e" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="4y5-Pg-S6A"/>
-                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="top" secondItem="ZOk-rR-W44" secondAttribute="bottom" constant="56" id="QXA-Zb-8EX"/>
                             <constraint firstItem="55t-pC-08e" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="22" id="RC5-QT-lSR"/>
-                            <constraint firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="UPw-DE-QpZ"/>
-                            <constraint firstItem="ZOk-rR-W44" firstAttribute="top" secondItem="K20-C1-GrK" secondAttribute="bottom" constant="14" id="UfC-bb-KTf"/>
+                            <constraint firstItem="NKk-cp-eDL" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" id="WjQ-Ap-tIb"/>
+                            <constraint firstAttribute="trailing" secondItem="NKk-cp-eDL" secondAttribute="trailing" id="aTl-a1-hh9"/>
+                            <constraint firstItem="NKk-cp-eDL" firstAttribute="top" secondItem="maK-y2-vp7" secondAttribute="top" id="bRd-oL-xlD"/>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="top" secondItem="NKk-cp-eDL" secondAttribute="bottom" id="cu1-7b-0FA"/>
                             <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="220" id="hVU-aa-8Cd"/>
-                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="ZOk-rR-W44" secondAttribute="trailing" constant="20" id="kMm-aK-b0M"/>
-                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="ZOk-rR-W44" secondAttribute="leading" constant="-20" id="smL-3f-Zp0"/>
-                            <constraint firstItem="ZOk-rR-W44" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" constant="20" id="yMq-ZM-IRv"/>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="NKk-cp-eDL" secondAttribute="leading" id="tma-AH-8MN"/>
+                            <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="NKk-cp-eDL" secondAttribute="trailing" id="zWP-uI-vXy"/>
                         </constraints>
                     </view>
                     <connections>

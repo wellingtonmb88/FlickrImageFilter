@@ -11,7 +11,7 @@ import UIKit
 let reuseCellIdentifier = "reuseCellIdentifier"
 
 class FilterMainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-      UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+      UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate {
     
     //MARK: @IBOutlet Variables
     @IBOutlet var sliderMenu: UIView!
@@ -309,5 +309,11 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             Filter.generateIconForFilterButton(self, type: filterType, button: cell.button!)
         }
         return cell
+    }
+    
+    //MARK: UIScrollView Delegate
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
     }
 } 
