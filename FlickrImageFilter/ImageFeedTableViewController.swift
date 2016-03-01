@@ -7,20 +7,28 @@
 
 import UIKit
 import CoreData
+import WatchConnectivity
 
-class ImageFeedTableViewController: UITableViewController { 
+class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     
     var progress: UIActivityIndicatorView?
+    var session: WCSession!
+    
     var feed: Feed? {
         didSet {
             self.tableView.reloadData()
             progress?.stopAnimating()
+            sendFeedToWatchOS()
         }
     }
     
     override func viewDidLoad() {
         createProgress()
-        self.progress?.startAnimating()
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
     }
     
     //MARK: @IBAction Functions
@@ -36,7 +44,6 @@ class ImageFeedTableViewController: UITableViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    //MARK: Private Functions
     
     func updateFeeds(tag: String){
         
@@ -60,6 +67,44 @@ class ImageFeedTableViewController: UITableViewController {
         }
     }
     
+    //MARK: Private Functions
+    
+    private func sendFeedToWatchOS(){
+        let applicationDict = ["status":"clean"]
+        self.updateApplicationContextWatchOS(applicationDict)
+        
+        let feedItems = self.feed?.items
+        
+            NetworkUtils.downloadAllImageDataFromFeed(feedItems!) { (batchData) -> Void in
+                
+                for data in batchData {
+                    self.session.sendMessageData(data, replyHandler: { (data) -> Void in
+                        
+                        var size: NSInteger = 0
+                        
+                        data.getBytes(&size, length: sizeof(NSInteger))
+                        print(size)
+                        
+                        if size == batchData.count{
+                            let applicationDict = ["status":"finished"]
+                            self.updateApplicationContextWatchOS(applicationDict)
+                        }
+                        
+                        }, errorHandler: { (error) -> Void in
+                            print(error)
+                    })
+                }
+            } 
+    }
+    
+    private func updateApplicationContextWatchOS(applicationDict: [String: AnyObject]){
+        do {
+            try self.session.updateApplicationContext(applicationDict)
+        } catch {
+            print("error")
+        }
+    }
+
     private func errorMessage(){
         let alertController = AlertUtils.createAlert("Sorry !", message: "No feeds found!")
         self.presentViewController(alertController, animated: true, completion: nil)

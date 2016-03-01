@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--Images Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="ImagesInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                    <items>
+                        <table alignment="left" id="JiW-Qo-jQe" userLabel="Images Table">
+                            <items>
+                                <tableRow identifier="ImageRow" id="44m-Y6-gAU" customClass="DownloadImageWK" customModule="FlickrImageFilterWatchOS_Extension">
+                                    <group key="rootItem" width="1" height="66" alignment="left" spacing="0.0" id="YDu-Mj-kcA">
+                                        <items>
+                                            <imageView width="126" height="57.5" alignment="center" image="sample.png" id="zkl-RK-dJw"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="imageViewInterface" destination="zkl-RK-dJw" id="5ps-tE-tC2"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="imagesTable" destination="JiW-Qo-jQe" id="aZU-1y-Zzm"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="244" y="245"/>
+        </scene>
+        <!--ImageDetails-->
+        <scene sceneID="8ny-bA-L75">
+            <objects>
+                <controller identifier="ImageDetails" id="0NF-aa-juk" customClass="ImageDetailInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                    <items>
+                        <group width="1" height="82.5" alignment="left" layout="vertical" id="ZCs-jb-bp1">
+                            <items>
+                                <imageView width="136" height="69" alignment="left" image="sample.png" contentMode="center" id="mRN-61-dWV"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="imageDetail" destination="mRN-61-dWV" id="KjV-hV-OLY"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="428" y="245"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="UXg-C8-BPE">
+            <objects>
+                <controller id="Ijy-P3-Ws9">
+                    <items>
+                        <group width="1" alignment="left" id="dgT-JR-0Mx"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="203" y="495"/>
+        </scene>
+    </scenes>
+</document>

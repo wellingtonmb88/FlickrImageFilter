@@ -15,7 +15,7 @@ func fixJsonData (data: NSData) -> NSData {
     
 }
 
-class Feed {
+class Feed: NSObject {
     
     let items: [FeedItem]
     let sourceURL: NSURL

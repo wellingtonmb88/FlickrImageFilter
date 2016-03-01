@@ -21,10 +21,26 @@ struct NetworkUtils {
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     completion(feed: feed)
                 })
+            } else {
+                completion(feed: nil)
             }
             
         }
         
         task.resume()
+    }
+    
+    //MARK: Download all Image data From Feed
+    static func downloadAllImageDataFromFeed(feedItems: [FeedItem], completion: (batchData:[NSData]) -> Void){
+        
+        NSOperationQueue().addOperationWithBlock({
+            var dataBatch: [NSData] = []
+            for feedItem in feedItems {
+                let data = NSData(contentsOfURL: NSURL(string: feedItem.imageURL.absoluteString)!)!
+                dataBatch.append(data)
+            }
+            
+            completion(batchData: dataBatch)
+        })
     }
 }
