@@ -176,10 +176,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="NKk-cp-eDL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="359"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="359.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-rR-W44" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="359"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="359.5"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
@@ -196,45 +196,41 @@
                                     <outletCollection property="gestureRecognizers" destination="eOD-7E-uPj" appends="YES" id="IWL-UA-nWn"/>
                                 </connections>
                             </scrollView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="55t-pC-08e">
-                                <rect key="frame" x="225" y="456" width="151" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
-                                        <rect key="frame" x="0.0" y="0.0" width="68" height="30"/>
-                                        <state key="normal" title="Filter Tool"/>
-                                        <connections>
-                                            <action selector="openImageFilterTool:" destination="OJw-c4-uRE" eventType="touchUpInside" id="kDY-ID-6uA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gm-D4-sHq">
-                                        <rect key="frame" x="83" y="0.0" width="68" height="30"/>
-                                        <state key="normal" title="Add Tag"/>
-                                        <connections>
-                                            <action selector="addTagToFeedItem:" destination="OJw-c4-uRE" eventType="touchUpInside" id="QaD-ps-ddc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-gh-ZFu">
-                                <rect key="frame" x="0.0" y="377" width="600" height="21"/>
+                                <rect key="frame" x="0.0" y="377" width="600" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-cy-btX">
+                                <rect key="frame" x="233" y="429" width="134" height="47"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <state key="normal" title="Filter Tool"/>
+                                <connections>
+                                    <action selector="openImageFilterTool:" destination="OJw-c4-uRE" eventType="touchUpInside" id="kDY-ID-6uA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="55t-pC-08e" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="4y5-Pg-S6A"/>
-                            <constraint firstItem="55t-pC-08e" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="58" id="RC5-QT-lSR"/>
                             <constraint firstItem="NKk-cp-eDL" firstAttribute="leading" secondItem="maK-y2-vp7" secondAttribute="leading" id="WjQ-Ap-tIb"/>
                             <constraint firstAttribute="trailing" secondItem="NKk-cp-eDL" secondAttribute="trailing" id="aTl-a1-hh9"/>
                             <constraint firstItem="NKk-cp-eDL" firstAttribute="top" secondItem="maK-y2-vp7" secondAttribute="top" id="bRd-oL-xlD"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="top" secondItem="NKk-cp-eDL" secondAttribute="bottom" constant="18" id="cu1-7b-0FA"/>
+                            <constraint firstItem="hIn-cy-btX" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="31" id="fLn-Or-X4q"/>
                             <constraint firstItem="MGS-fx-tdw" firstAttribute="top" secondItem="ZJd-gh-ZFu" secondAttribute="bottom" constant="202" id="hVU-aa-8Cd"/>
+                            <constraint firstItem="hIn-cy-btX" firstAttribute="centerX" secondItem="maK-y2-vp7" secondAttribute="centerX" id="heK-ix-Hn1"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="leading" secondItem="NKk-cp-eDL" secondAttribute="leading" id="tma-AH-8MN"/>
                             <constraint firstItem="ZJd-gh-ZFu" firstAttribute="trailing" secondItem="NKk-cp-eDL" secondAttribute="trailing" id="zWP-uI-vXy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Feed Details" id="JPN-Ky-67b">
+                        <barButtonItem key="rightBarButtonItem" title="Add  Tag" id="kKT-vN-g6t">
+                            <connections>
+                                <action selector="addTagToFeedItem:" destination="OJw-c4-uRE" id="Gwj-i7-Nfd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="detailImage" destination="ZOk-rR-W44" id="nZW-vw-Ug4"/>
                         <outlet property="detailName" destination="ZJd-gh-ZFu" id="cUC-R7-N3n"/>
