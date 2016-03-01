@@ -67,34 +67,23 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
         }
     }
     
-    //MARK: Private Functions
     
+    //MARK: WatchOS Functions
     private func sendFeedToWatchOS(){
-        let applicationDict = ["status":"clean"]
-        self.updateApplicationContextWatchOS(applicationDict)
         
         let feedItems = self.feed?.items
         
-            NetworkUtils.downloadAllImageDataFromFeed(feedItems!) { (batchData) -> Void in
-                
-                for data in batchData {
-                    self.session.sendMessageData(data, replyHandler: { (data) -> Void in
-                        
-                        var size: NSInteger = 0
-                        
-                        data.getBytes(&size, length: sizeof(NSInteger))
-                        print(size)
-                        
-                        if size == batchData.count{
-                            let applicationDict = ["status":"finished"]
-                            self.updateApplicationContextWatchOS(applicationDict)
-                        }
-                        
-                        }, errorHandler: { (error) -> Void in
-                            print(error)
-                    })
-                }
-            } 
+        let dataSize = ["dataSize": feedItems!.count]
+        session.sendMessage(dataSize, replyHandler: nil, errorHandler: nil)
+        
+        self.downloadAllImageDataFromFeed(feedItems!) { (position, imgData) -> Void in
+            
+            //Use this to update the UI instantaneously (otherwise, takes a little while)
+            dispatch_async(dispatch_get_main_queue()) {
+                let applicationDict = ["data": [["dataPosition":position], ["dataImage":imgData]]]
+                self.updateApplicationContextWatchOS(applicationDict)
+            }
+        }
     }
     
     private func updateApplicationContextWatchOS(applicationDict: [String: AnyObject]){
@@ -104,7 +93,21 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
             print("error")
         }
     }
-
+    
+    
+    private func downloadAllImageDataFromFeed(feedItems: [FeedItem], completion: (position: Int, imgData:NSData) -> Void){
+        
+        for index in 0..<feedItems.count {
+            NSOperationQueue().addOperationWithBlock({
+                let data = NSData(contentsOfURL: NSURL(string: feedItems[index].imageURL.absoluteString)!)!
+                
+                completion(position:index, imgData: data)
+            })
+        }
+    }
+    
+    //MARK: Private Functions
+    
     private func errorMessage(){
         let alertController = AlertUtils.createAlert("Sorry !", message: "No feeds found!")
         self.presentViewController(alertController, animated: true, completion: nil)

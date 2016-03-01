@@ -16,7 +16,7 @@ class ImagesInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var imagesTable: WKInterfaceTable!
     var session: WCSession!
     
-    var images = [UIImage]()
+    var images = [Int: UIImage]()
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -25,12 +25,12 @@ class ImagesInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
         }
+        updateTable()
     }
     
     override func didDeactivate() {
@@ -38,51 +38,55 @@ class ImagesInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
     }
     
-    func updateTable(images: [UIImage]){
-        imagesTable.setNumberOfRows(images.count, withRowType: "ImageRow")
-        
-        for index in 0..<imagesTable.numberOfRows {
-            if let controller = imagesTable.rowControllerAtIndex(index) as? DownloadImageWK {
-                let item = images[index]
-                controller.imageViewInterface.setImage(item)
+    func updateTable(){
+        for index in 0..<self.images.count {
+            if let controller = imagesTable.rowControllerAtIndex(index) as? ImageViewInterfaceController {
+                let image = self.images[index]
+                controller.imageViewInterface.setImage(image)
             }
+        }
+    }
+    
+    func updateImages(dataPosition: Int, imageData:NSData){
+        let image : UIImage = UIImage(data: imageData)!
+        self.images.updateValue(image, forKey: dataPosition)
+        if let controller = imagesTable.rowControllerAtIndex(dataPosition) as? ImageViewInterfaceController {
+            controller.imageViewInterface.setImage(image)
         }
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        
         let image = self.images[rowIndex]
         presentControllerWithName("ImageDetails", context: image)
     }
     
-    func session(session: WCSession, didReceiveMessageData messageData: NSData, replyHandler: (NSData) -> Void) {
-        let image : UIImage = UIImage(data: messageData)!
-        self.images.append(image)
-        
-        //Use this to update the UI instantaneously (otherwise, takes a little while)
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            var size: NSInteger = self.images.count
-            let data = NSData(bytes: &size, length: sizeof(NSInteger))
-            replyHandler(data)
-        }
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
 
+        if let size = message["dataSize"] as? Int {
+            self.imagesTable.setNumberOfRows(size, withRowType: "ImageRow")
+            self.images.removeAll()
+        }
     }
     
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
-        let status = applicationContext["status"] as? String
+       
         
-        switch status! {
-        case "finished":
-            //Use this to update the UI instantaneously (otherwise, takes a little while)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.updateTable(self.images)
-            }
-                break
-            case "clean" :
-                self.images.removeAll()
-                break
-            default:
-                break
+        guard let data = applicationContext["data"] as? [[String : AnyObject]] else{
+            return
+        }
+        
+        guard let dataPosition = data[0]["dataPosition"] as? Int else {
+            return
+        }
+        
+        guard let imgData = data[1]["dataImage"] as? NSData else {
+            return
+        }
+        
+        //Use this to update the UI instantaneously (otherwise, takes a little while)
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.updateImages(dataPosition, imageData: imgData)
         }
     }
 
