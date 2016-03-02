@@ -14,11 +14,27 @@ class ImageDetailInterfaceController: WKInterfaceController {
     
     @IBOutlet var imageDetail: WKInterfaceImage!
     
+    @IBOutlet var imageTitle: WKInterfaceLabel!
+    
+    //MARK: LifeCycle
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        if let image = context as? UIImage {
-            self.imageDetail.setImage(image)
-        } 
+        
+        guard let data = context!["data"] as? [[String : AnyObject]] else{
+            return
+        }
+        guard let imgLabel = data[0]["dataLabel"] as? String else {
+            return
+        }
+        
+        guard let imgData = data[1]["dataImage"] as? UIImage else {
+            return
+        }
+        
+        self.imageDetail.setImage(imgData)
+        self.imageTitle.setText(imgLabel)
+        
     }
     
     override func willActivate() {

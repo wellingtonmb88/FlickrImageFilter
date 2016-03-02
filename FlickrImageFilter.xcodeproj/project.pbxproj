@@ -26,6 +26,11 @@
 		13086A401C822FBE001F7D62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A3C1C822FBE001F7D62 /* Image.swift */; };
 		13086A421C822FFF001F7D62 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A411C822FFF001F7D62 /* DataController.swift */; };
 		1347D62A1C858A9D004860F0 /* ImageViewInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347D6291C858A9D004860F0 /* ImageViewInterfaceController.swift */; };
+		13712D101C8683F900B098FD /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13712D0F1C8683F900B098FD /* WatchData.swift */; };
+		13712D111C8683F900B098FD /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13712D0F1C8683F900B098FD /* WatchData.swift */; };
+		13712D131C86891100B098FD /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 13712D121C86891100B098FD /* loading.png */; };
+		13712D141C86891100B098FD /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 13712D121C86891100B098FD /* loading.png */; };
+		13712D1A1C8690EA00B098FD /* LoadAnimationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13712D181C8690EA00B098FD /* LoadAnimationInterfaceController.swift */; };
 		13731D2D1C8535FC00B80059 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13731D2B1C8535FC00B80059 /* Interface.storyboard */; };
 		13731D2F1C8535FC00B80059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13731D2E1C8535FC00B80059 /* Assets.xcassets */; };
 		13731D361C8535FC00B80059 /* FlickrImageFilterWatchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 13731D351C8535FC00B80059 /* FlickrImageFilterWatchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -111,6 +116,9 @@
 		13086A3C1C822FBE001F7D62 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		13086A411C822FFF001F7D62 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		1347D6291C858A9D004860F0 /* ImageViewInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewInterfaceController.swift; sourceTree = "<group>"; };
+		13712D0F1C8683F900B098FD /* WatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchData.swift; path = ../FlickrImageFilter/WatchData.swift; sourceTree = "<group>"; };
+		13712D121C86891100B098FD /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		13712D181C8690EA00B098FD /* LoadAnimationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAnimationInterfaceController.swift; sourceTree = "<group>"; };
 		13731D291C8535FC00B80059 /* FlickrImageFilterWatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageFilterWatchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13731D2C1C8535FC00B80059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		13731D2E1C8535FC00B80059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +179,7 @@
 		13086A221C81EACA001F7D62 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				13712D121C86891100B098FD /* loading.png */,
 				13086A231C81EAD3001F7D62 /* sample.png */,
 			);
 			name = resources;
@@ -212,6 +221,8 @@
 		13731D391C8535FC00B80059 /* FlickrImageFilterWatchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
+				13712D0F1C8683F900B098FD /* WatchData.swift */,
+				13712D181C8690EA00B098FD /* LoadAnimationInterfaceController.swift */,
 				1347D6291C858A9D004860F0 /* ImageViewInterfaceController.swift */,
 				13731D3A1C8535FC00B80059 /* ImagesInterfaceController.swift */,
 				13731D4D1C853CDF00B80059 /* ImageDetailInterfaceController.swift */,
@@ -414,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13712D141C86891100B098FD /* loading.png in Resources */,
 				13731D3F1C8535FC00B80059 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13712D131C86891100B098FD /* loading.png in Resources */,
 				13919B721C800081001E9510 /* LaunchScreen.storyboard in Resources */,
 				13086A2A1C81EBBE001F7D62 /* FilterMain.storyboard in Resources */,
 				13919B6F1C800081001E9510 /* Assets.xcassets in Resources */,
@@ -440,7 +453,9 @@
 				13731D3D1C8535FC00B80059 /* ExtensionDelegate.swift in Sources */,
 				13731D551C855CDD00B80059 /* NetworkUtis.swift in Sources */,
 				13731D531C854CD000B80059 /* Feed.swift in Sources */,
+				13712D111C8683F900B098FD /* WatchData.swift in Sources */,
 				13731D541C854FC800B80059 /* FeedItem.swift in Sources */,
+				13712D1A1C8690EA00B098FD /* LoadAnimationInterfaceController.swift in Sources */,
 				1347D62A1C858A9D004860F0 /* ImageViewInterfaceController.swift in Sources */,
 				13731D3B1C8535FC00B80059 /* ImagesInterfaceController.swift in Sources */,
 				13731D4E1C853CDF00B80059 /* ImageDetailInterfaceController.swift in Sources */,
@@ -459,6 +474,7 @@
 				13086A3F1C822FBE001F7D62 /* Image+CoreDataProperties.swift in Sources */,
 				13086A1F1C81EAA2001F7D62 /* RGBAImage.swift in Sources */,
 				13919B831C80018C001E9510 /* ImageFeedItemTableViewCell.swift in Sources */,
+				13712D101C8683F900B098FD /* WatchData.swift in Sources */,
 				13086A401C822FBE001F7D62 /* Image.swift in Sources */,
 				13086A171C81DC45001F7D62 /* FeedDetailsViewController.swift in Sources */,
 				13919B651C800081001E9510 /* AppDelegate.swift in Sources */,

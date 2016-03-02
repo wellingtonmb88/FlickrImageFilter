@@ -80,7 +80,7 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
             
             //Use this to update the UI instantaneously (otherwise, takes a little while)
             dispatch_async(dispatch_get_main_queue()) {
-                let applicationDict = ["data": [["dataPosition":position], ["dataImage":imgData]]]
+                let applicationDict = ["data": [["dataPosition":position], ["dataLabel":feedItems![position].title], ["dataImage":imgData]]]
                 self.updateApplicationContextWatchOS(applicationDict)
             }
         }
