@@ -26,16 +26,16 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     
     override func viewDidLoad() {
         createProgress()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
-        } 
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        }
         
         if let title = self.navigationItem.title {
             if title == "Feeds" {
