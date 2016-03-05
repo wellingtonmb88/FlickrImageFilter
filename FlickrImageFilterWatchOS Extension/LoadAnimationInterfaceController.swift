@@ -43,6 +43,7 @@ class LoadAnimationInterfaceController: WKInterfaceController, WCSessionDelegate
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         isActive = true
+        self.isUpdatingData = false
         
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
@@ -101,7 +102,7 @@ class LoadAnimationInterfaceController: WKInterfaceController, WCSessionDelegate
     
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         print("WatchKit - didReceiveApplicationContext : \(applicationContext)")
-        
+        self.isUpdatingData = true
         //Use this to update the UI instantaneously (otherwise, takes a little while)
         dispatch_async(dispatch_get_main_queue()) {
             
@@ -157,10 +158,49 @@ class LoadAnimationInterfaceController: WKInterfaceController, WCSessionDelegate
         if !self.isUpdatingData {
             if self.session.reachable {
                 let message = ["update":"yes"]
-                self.session.transferUserInfo(message)
+                sendMessageToiPhone(message)
             }
         }
         startAnimationWithDelay()
+    }
+    
+    private func sendMessageToiPhone(message : [String: AnyObject]){
+        self.session.sendMessage(message, replyHandler: { (response) -> Void in
+            
+            let status = response["replyHandler"] as! String
+            if status == "Error" {
+                self.showWarningPopup()
+            }
+            
+            }, errorHandler: { (error) -> Void in
+                self.showWarningPopup()
+        })
+        
+        self.delay(5, closure: { () -> () in
+            if !self.isUpdatingData {
+                self.showTimeOutPopup()
+            }
+        })
+    }
+    
+    private func showWarningPopup(){
+        
+        if isActive {
+            let action1 = WKAlertAction(title: "Ok", style: .Default, handler:pushControlleImagesTable)
+            let action2 = WKAlertAction(title: "Cancel", style: .Cancel, handler:pushControlleImagesTable)
+            
+            presentAlertControllerWithTitle("Warning!", message: "No new data!", preferredStyle: .ActionSheet, actions: [action1, action2])
+        }
+    }
+    
+    private func showTimeOutPopup(){
+        
+        if isActive {
+            let action1 = WKAlertAction(title: "Ok", style: .Default, handler:requestUpdate)
+            let action2 = WKAlertAction(title: "Cancel", style: .Cancel, handler:requestUpdate)
+            
+            presentAlertControllerWithTitle("Time Out!", message: "Connection time out! Please try again!", preferredStyle: .ActionSheet, actions: [action1, action2])
+        }
     }
     
     private func pushControlleImagesTable(){

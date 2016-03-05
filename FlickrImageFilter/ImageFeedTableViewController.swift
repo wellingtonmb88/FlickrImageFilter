@@ -14,6 +14,7 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     var progress: UIActivityIndicatorView?
     var session: WCSession!
     var lastTag: String!
+    var isFeedsTable: Bool = false
     
     var feed: Feed? {
         didSet {
@@ -25,11 +26,26 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     
     override func viewDidLoad() {
         createProgress()
+        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
         } 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let title = self.navigationItem.title {
+            if title == "Feeds" {
+                isFeedsTable = true
+            }else {
+                isFeedsTable = false
+            }
+        }else {
+            isFeedsTable = false
+        }
     }
     
     //MARK: @IBAction Functions
@@ -74,10 +90,12 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     }
     
     //MARK: WatchOS Functions 
-    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
-        let response = userInfo["update"] as! String
-        if response == "yes" {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        let response = message["update"] as! String
+        if response == "yes" && isFeedsTable {
             sendFeedToWatchOS()
+        } else {
+            replyHandler(["replyHandler": "Error"])
         }
     }
     
@@ -85,7 +103,7 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
         
         let feedItems = self.feed?.items
         
-        if feedItems?.count > 0 {
+        if feedItems?.count > 0 && isFeedsTable{
             let dataSize = ["dataSize": feedItems!.count]
             session.sendMessage(dataSize, replyHandler: nil, errorHandler: nil)
             

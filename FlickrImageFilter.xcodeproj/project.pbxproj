@@ -43,6 +43,19 @@
 		13731D531C854CD000B80059 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B7D1C800159001E9510 /* Feed.swift */; };
 		13731D541C854FC800B80059 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B7F1C800167001E9510 /* FeedItem.swift */; };
 		13731D551C855CDD00B80059 /* NetworkUtis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A2C1C81F6DA001F7D62 /* NetworkUtis.swift */; };
+		137C9BB21C8B5B1500381899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137C9BB11C8B5B1500381899 /* Assets.xcassets */; };
+		137C9BC21C8B5B4100381899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BB71C8B5B4100381899 /* AppDelegate.swift */; };
+		137C9BC51C8B5B4100381899 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBA1C8B5B4100381899 /* ImageCollectionViewCell.swift */; };
+		137C9BC61C8B5B4100381899 /* MasterFeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBB1C8B5B4100381899 /* MasterFeedCollectionViewController.swift */; };
+		137C9BC71C8B5B4100381899 /* FeedContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBC1C8B5B4100381899 /* FeedContainerCollectionViewCell.swift */; };
+		137C9BC81C8B5B4100381899 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBD1C8B5B4100381899 /* DetailViewController.swift */; };
+		137C9BC91C8B5B4100381899 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBE1C8B5B4100381899 /* Feed.swift */; };
+		137C9BCA1C8B5B4100381899 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BBF1C8B5B4100381899 /* FeedItem.swift */; };
+		137C9BCB1C8B5B4100381899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137C9BC11C8B5B4100381899 /* Main.storyboard */; };
+		137C9BD21C8B709000381899 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BD11C8B709000381899 /* Filter.swift */; };
+		137C9BD41C8B709E00381899 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BD31C8B709E00381899 /* Filtering.swift */; };
+		137C9BD71C8B70DF00381899 /* RGBAImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13086A1E1C81EAA2001F7D62 /* RGBAImage.swift */; };
+		137C9BE01C8B7EDA00381899 /* DownloadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9BDF1C8B7EDA00381899 /* DownloadImageView.swift */; };
 		13919B651C800081001E9510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919B641C800081001E9510 /* AppDelegate.swift */; };
 		13919B6A1C800081001E9510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13919B681C800081001E9510 /* Main.storyboard */; };
 		13919B6D1C800081001E9510 /* FlickrImageFilter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13919B6B1C800081001E9510 /* FlickrImageFilter.xcdatamodeld */; };
@@ -129,6 +142,20 @@
 		13731D3E1C8535FC00B80059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13731D401C8535FC00B80059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13731D4D1C853CDF00B80059 /* ImageDetailInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailInterfaceController.swift; sourceTree = "<group>"; };
+		137C9BA81C8B5B1500381899 /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		137C9BB11C8B5B1500381899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		137C9BB31C8B5B1500381899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		137C9BB71C8B5B4100381899 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/AppDelegate.swift; sourceTree = "<group>"; };
+		137C9BBA1C8B5B4100381899 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionViewCell.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		137C9BBB1C8B5B4100381899 /* MasterFeedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterFeedCollectionViewController.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/MasterFeedCollectionViewController.swift; sourceTree = "<group>"; };
+		137C9BBC1C8B5B4100381899 /* FeedContainerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedContainerCollectionViewCell.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/FeedContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		137C9BBD1C8B5B4100381899 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/DetailViewController.swift; sourceTree = "<group>"; };
+		137C9BBE1C8B5B4100381899 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/Feed.swift; sourceTree = "<group>"; };
+		137C9BBF1C8B5B4100381899 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedItem.swift; path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV/FeedItem.swift; sourceTree = "<group>"; };
+		137C9BC01C8B5B4100381899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		137C9BD11C8B709000381899 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		137C9BD31C8B709E00381899 /* Filtering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filtering.swift; sourceTree = "<group>"; };
+		137C9BDF1C8B7EDA00381899 /* DownloadImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadImageView.swift; sourceTree = "<group>"; };
 		13919B611C800081001E9510 /* FlickrImageFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13919B641C800081001E9510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13919B691C800081001E9510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +171,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		13731D321C8535FC00B80059 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		137C9BA51C8B5B1500381899 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -221,16 +255,93 @@
 		13731D391C8535FC00B80059 /* FlickrImageFilterWatchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				13712D0F1C8683F900B098FD /* WatchData.swift */,
-				13712D181C8690EA00B098FD /* LoadAnimationInterfaceController.swift */,
-				1347D6291C858A9D004860F0 /* ImageViewInterfaceController.swift */,
-				13731D3A1C8535FC00B80059 /* ImagesInterfaceController.swift */,
-				13731D4D1C853CDF00B80059 /* ImageDetailInterfaceController.swift */,
+				137C9BDD1C8B718A00381899 /* view */,
+				137C9BDC1C8B716F00381899 /* custom */,
+				137C9BDB1C8B716700381899 /* model */,
 				13731D3C1C8535FC00B80059 /* ExtensionDelegate.swift */,
 				13731D3E1C8535FC00B80059 /* Assets.xcassets */,
 				13731D401C8535FC00B80059 /* Info.plist */,
 			);
 			path = "FlickrImageFilterWatchOS Extension";
+			sourceTree = "<group>";
+		};
+		137C9BA91C8B5B1500381899 /* FlickrImageFilterTvOS */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BDA1C8B715100381899 /* custom */,
+				137C9BD91C8B712E00381899 /* view */,
+				137C9BD81C8B712000381899 /* model */,
+				137C9BD01C8B707B00381899 /* utils */,
+				137C9BB71C8B5B4100381899 /* AppDelegate.swift */,
+				137C9BC11C8B5B4100381899 /* Main.storyboard */,
+				137C9BB11C8B5B1500381899 /* Assets.xcassets */,
+				137C9BB31C8B5B1500381899 /* Info.plist */,
+			);
+			name = FlickrImageFilterTvOS;
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		137C9BD01C8B707B00381899 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BD11C8B709000381899 /* Filter.swift */,
+				137C9BD31C8B709E00381899 /* Filtering.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		137C9BD81C8B712000381899 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BBE1C8B5B4100381899 /* Feed.swift */,
+				137C9BBF1C8B5B4100381899 /* FeedItem.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		137C9BD91C8B712E00381899 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BBC1C8B5B4100381899 /* FeedContainerCollectionViewCell.swift */,
+				137C9BBB1C8B5B4100381899 /* MasterFeedCollectionViewController.swift */,
+				137C9BBD1C8B5B4100381899 /* DetailViewController.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		137C9BDA1C8B715100381899 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				137C9BBA1C8B5B4100381899 /* ImageCollectionViewCell.swift */,
+				137C9BDF1C8B7EDA00381899 /* DownloadImageView.swift */,
+			);
+			name = custom;
+			sourceTree = "<group>";
+		};
+		137C9BDB1C8B716700381899 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				13712D0F1C8683F900B098FD /* WatchData.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		137C9BDC1C8B716F00381899 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				1347D6291C858A9D004860F0 /* ImageViewInterfaceController.swift */,
+			);
+			name = custom;
+			sourceTree = "<group>";
+		};
+		137C9BDD1C8B718A00381899 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				13712D181C8690EA00B098FD /* LoadAnimationInterfaceController.swift */,
+				13731D3A1C8535FC00B80059 /* ImagesInterfaceController.swift */,
+				13731D4D1C853CDF00B80059 /* ImageDetailInterfaceController.swift */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 		13919B581C800081001E9510 = {
@@ -239,6 +350,7 @@
 				13919B631C800081001E9510 /* FlickrImageFilter */,
 				13731D2A1C8535FC00B80059 /* FlickrImageFilterWatchOS */,
 				13731D391C8535FC00B80059 /* FlickrImageFilterWatchOS Extension */,
+				137C9BA91C8B5B1500381899 /* FlickrImageFilterTvOS */,
 				13919B621C800081001E9510 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -249,6 +361,7 @@
 				13919B611C800081001E9510 /* FlickrImageFilter.app */,
 				13731D291C8535FC00B80059 /* FlickrImageFilterWatchOS.app */,
 				13731D351C8535FC00B80059 /* FlickrImageFilterWatchOS Extension.appex */,
+				137C9BA81C8B5B1500381899 /* tvOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,6 +463,23 @@
 			productReference = 13731D351C8535FC00B80059 /* FlickrImageFilterWatchOS Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		137C9BA71C8B5B1500381899 /* tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 137C9BB61C8B5B1500381899 /* Build configuration list for PBXNativeTarget "tvOS" */;
+			buildPhases = (
+				137C9BA41C8B5B1500381899 /* Sources */,
+				137C9BA51C8B5B1500381899 /* Frameworks */,
+				137C9BA61C8B5B1500381899 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tvOS;
+			productName = tvOS;
+			productReference = 137C9BA81C8B5B1500381899 /* tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		13919B601C800081001E9510 /* FlickrImageFilter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13919B761C800081001E9510 /* Build configuration list for PBXNativeTarget "FlickrImageFilter" */;
@@ -385,6 +515,9 @@
 					13731D341C8535FC00B80059 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
+					137C9BA71C8B5B1500381899 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 					13919B601C800081001E9510 = {
 						CreatedOnToolsVersion = 7.1.1;
 						SystemCapabilities = {
@@ -411,6 +544,7 @@
 				13919B601C800081001E9510 /* FlickrImageFilter */,
 				13731D281C8535FC00B80059 /* FlickrImageFilterWatchOS */,
 				13731D341C8535FC00B80059 /* FlickrImageFilterWatchOS Extension */,
+				137C9BA71C8B5B1500381899 /* tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -432,6 +566,15 @@
 			files = (
 				13712D141C86891100B098FD /* loading.png in Resources */,
 				13731D3F1C8535FC00B80059 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		137C9BA61C8B5B1500381899 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				137C9BB21C8B5B1500381899 /* Assets.xcassets in Resources */,
+				137C9BCB1C8B5B4100381899 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +607,24 @@
 				1347D62A1C858A9D004860F0 /* ImageViewInterfaceController.swift in Sources */,
 				13731D3B1C8535FC00B80059 /* ImagesInterfaceController.swift in Sources */,
 				13731D4E1C853CDF00B80059 /* ImageDetailInterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		137C9BA41C8B5B1500381899 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				137C9BC71C8B5B4100381899 /* FeedContainerCollectionViewCell.swift in Sources */,
+				137C9BC91C8B5B4100381899 /* Feed.swift in Sources */,
+				137C9BD71C8B70DF00381899 /* RGBAImage.swift in Sources */,
+				137C9BE01C8B7EDA00381899 /* DownloadImageView.swift in Sources */,
+				137C9BC51C8B5B4100381899 /* ImageCollectionViewCell.swift in Sources */,
+				137C9BCA1C8B5B4100381899 /* FeedItem.swift in Sources */,
+				137C9BC21C8B5B4100381899 /* AppDelegate.swift in Sources */,
+				137C9BC61C8B5B4100381899 /* MasterFeedCollectionViewController.swift in Sources */,
+				137C9BD21C8B709000381899 /* Filter.swift in Sources */,
+				137C9BD41C8B709E00381899 /* Filtering.swift in Sources */,
+				137C9BC81C8B5B4100381899 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +680,15 @@
 				13731D2C1C8535FC00B80059 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		137C9BC11C8B5B4100381899 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				137C9BC01C8B5B4100381899 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ../../../../Downloads/_4ab72351d60841b93eb0c8c69c57d43b_tvOSProjects/Video4/PhotosTV/PhotosTV;
 			sourceTree = "<group>";
 		};
 		13919B681C800081001E9510 /* Main.storyboard */ = {
@@ -597,6 +767,36 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		137C9BB41C8B5B1500381899 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = wellington.swift.tvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		137C9BB51C8B5B1500381899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = wellington.swift.tvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -725,6 +925,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		137C9BB61C8B5B1500381899 /* Build configuration list for PBXNativeTarget "tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				137C9BB41C8B5B1500381899 /* Debug */,
+				137C9BB51C8B5B1500381899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		13919B5C1C800081001E9510 /* Build configuration list for PBXProject "FlickrImageFilter" */ = {
 			isa = XCConfigurationList;

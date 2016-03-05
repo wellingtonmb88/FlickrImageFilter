@@ -113,12 +113,12 @@
         <scene sceneID="4kn-k4-AeA">
             <objects>
                 <tableViewController id="Gw0-aW-g06" customClass="ImageFeedTableViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" id="7DD-YR-VE2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" id="7DD-YR-VE2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageFeedItemTableViewCell" rowHeight="181" id="IPC-wQ-UAd" customClass="ImageFeedItemTableViewCell" customModule="FlickrImageFilter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageFeedItemTableViewCell" rowHeight="181" id="IPC-wQ-UAd" customClass="ImageFeedItemTableViewCell" customModule="FlickrImageFilter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="181"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IPC-wQ-UAd" id="RJ5-UA-w7p">
