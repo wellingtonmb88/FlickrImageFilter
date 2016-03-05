@@ -13,6 +13,7 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     
     var progress: UIActivityIndicatorView?
     var session: WCSession!
+    var lastTag: String!
     
     var feed: Feed? {
         didSet {
@@ -28,7 +29,7 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
-        }
+        } 
     }
     
     //MARK: @IBAction Functions
@@ -62,26 +63,39 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
                     self.errorMessage()
                     return
                 }
-                self.feed = feed
+                if self.lastTag != tag {
+                    self.feed = feed
+                    self.lastTag = tag
+                } else {
+                    self.progress?.stopAnimating()
+                }
             })
         }
     }
     
+    //MARK: WatchOS Functions 
+    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+        let response = userInfo["update"] as! String
+        if response == "yes" {
+            sendFeedToWatchOS()
+        }
+    }
     
-    //MARK: WatchOS Functions
-    private func sendFeedToWatchOS(){
+    func sendFeedToWatchOS(){
         
         let feedItems = self.feed?.items
         
-        let dataSize = ["dataSize": feedItems!.count]
-        session.sendMessage(dataSize, replyHandler: nil, errorHandler: nil)
-        
-        self.downloadAllImageDataFromFeed(feedItems!) { (position, imgData) -> Void in
+        if feedItems?.count > 0 {
+            let dataSize = ["dataSize": feedItems!.count]
+            session.sendMessage(dataSize, replyHandler: nil, errorHandler: nil)
             
-            //Use this to update the UI instantaneously (otherwise, takes a little while)
-            dispatch_async(dispatch_get_main_queue()) {
-                let applicationDict = ["data": [["dataPosition":position], ["dataLabel":feedItems![position].title], ["dataImage":imgData]]]
-                self.updateApplicationContextWatchOS(applicationDict)
+            self.downloadAllImageDataFromFeed(feedItems!) { (position, imgData) -> Void in
+                
+                //Use this to update the UI instantaneously (otherwise, takes a little while)
+                dispatch_async(dispatch_get_main_queue()) {
+                    let applicationDict = ["data": [["dataPosition":position], ["dataLabel":feedItems![position].title], ["dataImage":imgData]]]
+                    self.updateApplicationContextWatchOS(applicationDict)
+                }
             }
         }
     }

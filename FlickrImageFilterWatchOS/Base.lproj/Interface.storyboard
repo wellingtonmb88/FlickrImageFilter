@@ -57,7 +57,8 @@
             <objects>
                 <controller identifier="LoadAnimation" id="ytb-I2-BrH" customClass="LoadAnimationInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
                     <items>
-                        <group width="1" height="1" alignment="left" backgroundImage="frame" contentMode="center" id="j9T-aN-g6y">
+                        <label alignment="left" text="Connecting..." id="Dbw-mF-SdF"/>
+                        <group width="1" height="0.90000000000000002" heightAdjustment="-6" alignment="center" verticalAlignment="center" backgroundImage="frame" contentMode="center" id="j9T-aN-g6y">
                             <items>
                                 <group height="30" alignment="left" id="xSh-2o-t9T">
                                     <items>
@@ -83,11 +84,12 @@
                         <outlet property="circleGroupBlue" destination="j4O-01-Kzl" id="ZCG-R9-0Dt"/>
                         <outlet property="circleGroupGreen" destination="xSh-2o-t9T" id="3KP-iY-Rhw"/>
                         <outlet property="circleGroupRed" destination="wAQ-va-ggL" id="N83-mW-YNW"/>
+                        <outlet property="connectionStatusLabel" destination="Dbw-mF-SdF" id="QyT-Ka-i2L"/>
                         <outlet property="mainGroup" destination="j9T-aN-g6y" id="mPl-fj-fv2"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="533" y="519.5"/>
+            <point key="canvasLocation" x="533" y="519.25"/>
         </scene>
     </scenes>
 </document>
