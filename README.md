@@ -1,17 +1,35 @@
 # FlickrImageFilter
 Cousera Project : iOS App Development with Swift  [link to Course!](https://www.coursera.org/learn/ios-app-design-development)
 
-The third course of the iOS App Development with Swift specialization I developed foundational programming skills 
-to support graphical element presentation and data manipulation from basic functions through to advanced processing as follows:
+This App searches for a list of public feeds from Flickr.
 
-* Camera, photo library, view presentation and the delegate pattern: I'm able to access the camera and photo library by presenting an image picker and understanding how to get the image through the delegate.
+## iOS features:
 
-* Core Graphics: I'm able to apply use of Core Graphics to access the internals of an image and perform pixel manipulations.
+* Show organized list of feeds with image and description.
 
-* Touch handling and gestures: I'm able to use a pan gesture so to change the brightness of an image by swiping vertically on it.
+* Select a feed and apply a color filter.
 
-* Animations and Transitions: I'm able to animate the transition of the image in a view along with the position and size.
+* Save the feed in DB by a tag name.
 
-* Alerts and Action Sheets: I implemented alert functionality to prompt users about important actions. 
+## watchOS features:
 
-* Advanced algorithms and threading: Perform more advanced image processing and use background threads to prevent blocking the main thread.
+* Transfer the feeds from iOS to watchOS.
+
+* Show organized list of feeds with image.
+
+* Select a feed and apply a color filter. 
+
+## tvOS features:
+
+* Show organized list of feeds with image and description.
+
+* Select a feed and apply a color filter. 
+
+ 
+# Technologies 
+
+* Core Data
+* NSURLSession for Network request
+* Multithread implementation
+* Cache Image locally 
+
