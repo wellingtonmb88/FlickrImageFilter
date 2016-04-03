@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ytb-I2-BrH">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--ImagesTable-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="ImagesTable" id="AgC-eL-Hgc" customClass="ImagesInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                    <items>
+                        <table alignment="left" id="JiW-Qo-jQe" userLabel="Images Table">
+                            <items>
+                                <tableRow identifier="ImageRow" id="44m-Y6-gAU" customClass="ImageViewInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" contentMode="center" spacing="0.0" id="YDu-Mj-kcA">
+                                        <items>
+                                            <imageView width="1" height="96" alignment="center" image="frame" contentMode="center" id="zkl-RK-dJw"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="imageViewInterface" destination="zkl-RK-dJw" id="5ps-tE-tC2"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="imagesTable" destination="JiW-Qo-jQe" id="aZU-1y-Zzm"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="244" y="245"/>
+        </scene>
+        <!--ImageDetails-->
+        <scene sceneID="8ny-bA-L75">
+            <objects>
+                <controller identifier="ImageDetails" id="0NF-aa-juk" customClass="ImageDetailInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                    <items>
+                        <group height="124.5" alignment="center" id="ZCs-jb-bp1">
+                            <items>
+                                <imageView width="1" height="1" alignment="center" image="loading.png" contentMode="redraw" id="mRN-61-dWV"/>
+                            </items>
+                        </group>
+                        <label width="136" alignment="center" text="Label" textAlignment="center" baselineAdjustment="alignCenters" numberOfLines="10" id="YLx-2n-MRQ"/>
+                    </items>
+                    <connections>
+                        <outlet property="imageDetail" destination="mRN-61-dWV" id="KjV-hV-OLY"/>
+                        <outlet property="imageTitle" destination="YLx-2n-MRQ" id="EAN-BT-0wb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="533" y="222"/>
+        </scene>
+        <!--LoadAnimation-->
+        <scene sceneID="SGw-3q-SgJ">
+            <objects>
+                <controller identifier="LoadAnimation" id="ytb-I2-BrH" customClass="LoadAnimationInterfaceController" customModule="FlickrImageFilterWatchOS_Extension">
+                    <items>
+                        <label alignment="left" text="Connecting..." id="Dbw-mF-SdF"/>
+                        <group width="1" height="0.90000000000000002" heightAdjustment="-6" alignment="center" verticalAlignment="center" backgroundImage="frame" contentMode="center" id="j9T-aN-g6y">
+                            <items>
+                                <group height="30" alignment="left" id="xSh-2o-t9T">
+                                    <items>
+                                        <group width="15" height="15" alignment="right" verticalAlignment="center" radius="7" id="Neb-kk-Bx3">
+                                            <color key="backgroundColor" red="0.2835112521" green="1" blue="0.22811799839999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group height="30" alignment="left" id="j4O-01-Kzl">
+                                    <items>
+                                        <group width="20" height="20" alignment="center" verticalAlignment="center" radius="10" id="32S-qe-Nkn">
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="30" height="30" alignment="left" radius="15" id="wAQ-va-ggL">
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="circleGroupBlue" destination="j4O-01-Kzl" id="ZCG-R9-0Dt"/>
+                        <outlet property="circleGroupGreen" destination="xSh-2o-t9T" id="3KP-iY-Rhw"/>
+                        <outlet property="circleGroupRed" destination="wAQ-va-ggL" id="N83-mW-YNW"/>
+                        <outlet property="connectionStatusLabel" destination="Dbw-mF-SdF" id="QyT-Ka-i2L"/>
+                        <outlet property="mainGroup" destination="j9T-aN-g6y" id="mPl-fj-fv2"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="533" y="519.25"/>
+        </scene>
+    </scenes>
+</document>

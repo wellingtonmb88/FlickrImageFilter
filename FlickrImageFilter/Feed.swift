@@ -1,14 +1,12 @@
 //
 //  Feed.swift
-//  PhotoFeed
+//  FlickrImageFilter
 //
-//  Created by Mike Spears on 2016-01-08.
-//  Copyright © 2016 YourOganisation. All rights reserved.
+//  Created by WELLINGTON BARBOSA on 2/26/16.
+//  Copyright © 2016 WELLINGTON BARBOSA. All rights reserved.
 //
 
 import Foundation
-
-
 
 func fixJsonData (data: NSData) -> NSData {
     var dataString = String(data: data, encoding: NSUTF8StringEncoding)!
@@ -17,8 +15,7 @@ func fixJsonData (data: NSData) -> NSData {
     
 }
 
-
-class Feed {
+class Feed: NSObject {
     
     let items: [FeedItem]
     let sourceURL: NSURL
@@ -70,7 +67,7 @@ class Feed {
             
             let title = itemDict["title"] as? String
             
-            newItems.append(FeedItem(title: title ?? "(no title)", imageURL: url))
+            newItems.append(FeedItem(title: title ?? "(no title)", imageURL: url, isFiltered: 0))
             
         }
         
