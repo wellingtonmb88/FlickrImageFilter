@@ -10,8 +10,7 @@ import UIKit
 
 let reuseCellIdentifier = "reuseCellIdentifier"
 
-class FilterMainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-      UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate {
+class FilterMainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate{
     
     //MARK: @IBOutlet Variables
     @IBOutlet var sliderMenu: UIView!
@@ -58,7 +57,7 @@ class FilterMainViewController: UIViewController, UINavigationControllerDelegate
             imageOriginal = imageView.image!
         }
         
-        let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleImageLongPress:"))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(FilterMainViewController.handleImageLongPress(_:)))
         self.imageView.addGestureRecognizer(longPress)
         
         zoomTapGestureRecognizer.numberOfTapsRequired = 2

@@ -9,8 +9,9 @@ import UIKit
 import CoreData
 import WatchConnectivity
 
-class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
+class ImageFeedTableViewController: UITableViewController, WCSessionDelegate, UISearchBarDelegate, UISearchControllerDelegate  {
     
+    var searchController: UISearchController!
     var progress: UIActivityIndicatorView?
     var session: WCSession!
     var lastTag: String!
@@ -26,6 +27,20 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
     
     override func viewDidLoad() {
         createProgress()
+        
+        // Search controller
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search Tag"
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        // Add the search bar
+        self.definesPresentationContext = false
+        searchController.searchBar.sizeToFit()
+        self.navigationItem.titleView = searchController.searchBar
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,21 +61,17 @@ class ImageFeedTableViewController: UITableViewController, WCSessionDelegate {
         }else {
             isFeedsTable = false
         }
-    }
+    } 
     
-    //MARK: @IBAction Functions
-    
-    @IBAction func search(sender: AnyObject) {
+    //MARK: UISearchBarDelegate
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-        let alertController = AlertUtils.createAlertWithTextField("Search by Tag!", message: "Type your tag", okActionHandler: { (textFieldValue) -> Void in
-           let text = textFieldValue.stringByReplacingOccurrencesOfString(" ", withString: "",
-                options: NSStringCompareOptions.LiteralSearch, range: nil)
+        if let searchText = searchBar.text{
+            let text = searchText.stringByReplacingOccurrencesOfString(" ", withString: "",
+                                                                            options: NSStringCompareOptions.LiteralSearch, range: nil)
             self.updateFeeds(text)
-        })
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
-    
     
     func updateFeeds(tag: String){
         
