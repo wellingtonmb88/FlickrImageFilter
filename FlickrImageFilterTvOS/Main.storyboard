@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="FbV-R6-94w">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="FbV-R6-94w">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +24,7 @@
         <!--Master Feed Collection View Controller-->
         <scene sceneID="BZr-8c-hO4">
             <objects>
-                <collectionViewController id="lXQ-q6-3ST" customClass="MasterFeedCollectionViewController" customModule="tvOS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="lXQ-q6-3ST" customClass="MasterFeedCollectionViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="FQ2-HG-WfH">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContainerCell" id="tB3-54-ah5" customClass="FeedContainerCollectionViewCell" customModule="tvOS" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContainerCell" id="tB3-54-ah5" customClass="FeedContainerCollectionViewCell" customModule="FlickrImageFilter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="145" width="1920" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -51,7 +51,7 @@
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Chc-Le-fKT" customClass="ImageCollectionViewCell" customModule="tvOS" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Chc-Le-fKT" customClass="ImageCollectionViewCell" customModule="FlickrImageFilter" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="548" height="400"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -61,7 +61,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h97-XP-yN6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="548" height="400"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ze-oa-KFe" customClass="DownloadImageView" customModule="tvOS" customModuleProvider="target">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ze-oa-KFe" customClass="DownloadImageView" customModule="FlickrImageFilter" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="548" height="308"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="308" id="v6T-9K-Gby"/>
@@ -122,7 +122,7 @@
         <!--Detail View Controller-->
         <scene sceneID="neZ-lw-Kjk">
             <objects>
-                <viewController id="Ojf-F7-Yu7" customClass="DetailViewController" customModule="tvOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ojf-F7-Yu7" customClass="DetailViewController" customModule="FlickrImageFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jjq-lF-axs"/>
                         <viewControllerLayoutGuide type="bottom" id="Rxk-pR-GlC"/>
